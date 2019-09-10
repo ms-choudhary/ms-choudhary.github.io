@@ -9,11 +9,7 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-    Open `_data/authors.yml` to edit this text.
+        Hi, I'm Mohit Choudhary. I'm a software developer, recently transitioned more towards operations side. I strongly believe in devops (development & operations should go hand in hand), more recently devsecops. In this blog, I try to keep up to date any interesting thing I work on or new challenges that I face.
 
   # This photo will be used in the about section.
   picture:
