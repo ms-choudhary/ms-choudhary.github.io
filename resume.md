@@ -6,4 +6,4 @@ description: >
 permalink: /resume/
 ---
 
-<object data="/Mohit\ Choudhary.pdf" width="800" height="1000" type='application/pdf'/>
+<object data="/mohit_choudhary.pdf" width="800" height="1000" type='application/pdf'/>
