@@ -140,7 +140,7 @@ Following policy ensures that container is only able to read secrets for service
         "ssm:GetParameters",
         "ssm:GetParametersByPath"
     ],
-    "Resource": "arn:aws:ssm:*:*:parameter/{{ service_name }}/*"
+    "Resource": "arn:aws:ssm:*:*:parameter/<< service_name >>/*"
 },
 ```
 
@@ -180,7 +180,7 @@ for all new files (in this case we use single KMS key for all staging services):
 $ cat staging/.sops.yaml
 creation_rules:
   - path_regex: \.json$
-    kms: '{{ arn_of_kms_key }}'
+    kms: '<< arn_of_kms_key >>'
 ```
 
 You'll have to create KMS key in AWS (see above on how to do that, also checkout
