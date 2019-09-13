@@ -10,6 +10,7 @@ noindex: true
 > your systems and applications. It will also govern how your team
 > collaborates—a vital but sometimes overlooked consequence of any configuration
 > management strategy.
+>
 > -- Continuous Delivery: Reliable Software Releases through Build, Test, and
 > Deployment Automation
 
