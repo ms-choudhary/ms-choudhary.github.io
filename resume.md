@@ -2,8 +2,8 @@
 layout: page
 title: Resume
 description: >
-  Last updated at 10th, September, 2019
+  Last updated at 31st, January, 2021
 permalink: /resume/
 ---
 
-<object data="/mohit_choudhary.pdf" width="800" height="1000" type='application/pdf'/>
+<object data="/resume/mohit_choudhary.pdf" width="800" height="1000" type='application/pdf'/>

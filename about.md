@@ -9,7 +9,7 @@ Hi, I'm Mohit Choudhary. I'm a software developer, recently transitioned more to
 
 #### Present
 
-Currently I'm working as Site Reliability Engineer at
+Currently I'm working as Lead Devops Engineer at
 [Scripbox](https://scripbox.com).
 
 #### Formerly
@@ -24,13 +24,6 @@ learned a great deal by working on legacy application.
 
 I'm fascinated a lot by digital computers & am always interested to look under
 hood of how things work.
-
-Here are some interesting articles:
-
-- I tried to write my own operating systems.
-- I tried to write my own database
-- I tried to understand how redis works looking at its source code
-- I tried to understand how kubernetes works looking at its source code
 
 Apart from computers, I love swimming, reading, listening & playing music on my
 flute in my spare time.

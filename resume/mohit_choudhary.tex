@@ -69,8 +69,8 @@
 \newcommand{\mywebheader}{
 \begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
                 & +91-80872 99526\\
-	\textbf{\href{https://mohitchoudhary.site/}{\LARGE Mohit Choudhary}} & \href{mailto:mohit@mohitchoudhary.site}{mohit@mohitchoudhary.site}\\
-	{Bangalore, India} & \href{https://mohitchoudhary.site}{https://mohitchoudhary.site} \\
+	\textbf{\href{https://ms-choudhary.github.io/}{\LARGE Mohit Choudhary}} & \href{mailto:msch0udhary@protonmail.com}{msch0udhary@protonmail.com}\\
+	{Bangalore, India} & \href{https://ms-choudhary.github.io}{https://ms-choudhary.github.io} \\
                 & \faGithub \href{https://github.com/ms-choudhary}{/ms-choudhary} \\
 	\end{tabular*}
 \\
@@ -78,6 +78,19 @@
 
 % CHANGE HEADER SOURCE HERE
 \mywebheader
+
+%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Skills}
+	\begin{description}[noitemsep]
+		\item[Languages:] { \footnotesize Go, Elixir, Ruby, Bash}
+		\item[Databases:] { \footnotesize Etcd, PostgreSQL, Elasticsearch, Redis}
+    \item[CI/CD:] { \footnotesize Gitlab, Gitlab CI}
+    \item[Cloud Providers:] { \footnotesize AWS }
+    \item[Container Orchestration:] { \footnotesize Kubernetes }
+    \item[Tools:] { \footnotesize Ansible, Packer, Terraform, Vagrant, Docker }
+    \item[Logging/Monitoring:] { \footnotesize Prometheus, Grafana, Loki, Graylog }
+    \item[OS:] { \footnotesize Linux, Unix, QEMU }
+	\end{description} % End Skills list
 
 %%%%%%%%%%%%%%%%%%%%%%
 \resheading{Education}
@@ -92,30 +105,25 @@
 						\begin{itemize}
 							\resitem{HPC implementation in Cloud Computing - Researched various possibilities of parallel computing}
 							\resitem{Malware detection in Android based platforms - Based on clustering of linux system calls}
-							\resitem{Online Class Enrollment Programme - Personal project for enrolling into elective subjects }
 						\end{itemize}
 				\end{itemize}
 				}
 	\end{itemize} % End Education list
+
 
 %%%%%%%%%%%%%%%%%%%%%%
 \resheading{Experience}
 	\begin{itemize}
 		\item 
 			\ressubheading{\href{https://scripbox.com/}{Scripbox}}{Bangalore}
-				{Devops Engineer}{Jul. 2017 -- Present}
+				{Lead Devops Engineer}{Jul. 2017 -- Present}
 				{ \footnotesize
 				\begin{itemize}
-					\resitem{Setup \& maintained self managed Kubernetes clusters (in staging \& production) on AWS}
-					\resitem{Containerized all services; Setup common build conventions across all projects}
-					\resitem{Migrated production workloads to Kubernetes with minimal downtime}
-          \resitem{Setup autoscaling of production services on Kubernetes based on resources/application metrics}
-          \resitem{Setup common deploy pipeline across all projects, with canary deployment and autorollback support}
-          \resitem{Continuously improved time to build \& deploy, via effective use of docker caching \& reducing container startup time}
-          \resitem{Cost optimization by auto scaling down of unused services in staging}
-          \resitem{Setup effective monitoring, alerting and logging for all production \& staging services, via Prometheus, Grafana, Alertmanager, Loki}
-          %\resitem{Migrated \& maintained self hosted Gitlab on Kubernetes}
-          \resitem{Setup central configuration service for all projects}
+					\resitem{Developed and responsible for maintaining highly available centralized authentication service, which uses JWT tokens for authentication}
+					\resitem{Maintaining highly active internal communication service that sends monthly newsletters as well as event based communication}
+					\resitem{Custom auto-scaling of applications on Kubernetes based on application metrics}
+					\resitem{Responsible for maintaining two Kubernetes cluster (staging \& production) on AWS}
+					\resitem{Responsible for triaging \& resolving production incidents}
 				\end{itemize}
 				}
 \begin{comment}
@@ -136,58 +144,28 @@
 				\begin{itemize}
 					\resitem{Developed web service to generate reports of captured orders for specific products}
 					\resitem{Developed web service to capture orders in OCX (Ordering Capture Express)}
-					\resitem{Developed an internal tool for code review; Adding triggers to Perforce}
-					\resitem{Setup nightly CI job for running full E2E tests}
 				\end{itemize}
 				}
       \ressubsubheading{Software Developer Associate}{Jun. 2014 -- Jan. 2016}
         { \footnotesize
         \begin{itemize}
-          \resitem{Specialization in developing order capture tools for telecom companies}
           \resitem{Worked on core team which develops generalized Ordering framework}
-          \resitem{Worked on delivery team whose main responsibilities is to customize the core product according to customer needs}
-          \resitem{Developed web service for providing detailed order data to downstream systems}
         \end{itemize}
         }
 	\end{itemize}  % End Experience list
 
 %%%%%%%%%%%%%%%%%%%%%%
-\resheading{Skills}
-	\begin{description}[noitemsep]
-		\item[Languages:] { \footnotesize Go, Elixir, Bash, Ruby, C, Java, GraphQL, SQL}
-		\item[Databases:] { \footnotesize MySQL, PostgreSQL, Elasticsearch, Redis}
-    \item[CI/CD:] { \footnotesize Gitlab, Gitlab CI}
-    \item[Cloud Providers:] { \footnotesize AWS }
-    \item[Container Orchestration:] { \footnotesize Kubernetes }
-    \item[Tools/Frameworks:] { \footnotesize Ansible, Packer, Terraform, Docker, Git, Rails }
-    \item[Logging/Monitoring:] { \footnotesize Prometheus, Grafana, Loki, Graylog }
-    \item[OS:] { \footnotesize Linux, Unix, Oracle VirtualBox, QEMU }
-	\end{description} % End Skills list
+
+\resheading{Certifications}
+  \begin{itemize}
+      \resitem{\footnotesize \href{https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/51db2b03-30f4-54b3-9cbb-456782c62bd8-mohit-s-choudhary-certified-kubernetes-administrator-cka-certificate.pdf}{Certified Kubernetes Administrator (CKA)}}
+  \end{itemize}
 
 \resheading{Projects}
 
 \begin{description}
   \item[{\href{https://github.com/ms-choudhary/cachr}{cachr}}:] { \footnotesize A tool for effective caching in CI/CD; Based on sha of bunch of input folders, this'll cache selective output folders to S3; Sha ensures caching happens only incase of changes in input folder }
-\item[{\href{https://github.com/ms-choudhary/whisper}{whisper}}:] { \footnotesize A temporary scratch pad for user secrets; User can generate URL for any text with predefined expiry time; No external tools required to either generate or use secrets  }
-\item[{\href{https://github.com/ms-choudhary/slackup}{slackup}}:] { \footnotesize A tool which backups slack message at real time and allows users to search through the history; Indexes all data in elasticsearch}
-\item[{\href{https://github.com/ms-choudhary/xkcd}{xkcd}}:] { \footnotesize A simple command line tool for searching and fetching xkcd comics; Indexes all data in elasticsearch }
 \end{description}
-
-\resheading{Public Artifacts}
-
-\begin{itemize}
-  \resitem{\footnotesize \href{https://medium.com/scripbox-engineering/how-knapsack-accelerated-our-test-suite-by-50-42f8cb584c47}{How Knapsack accelerated our test suite by 50\%}}
-\end{itemize}
-
-\resheading{Other Achivements}
-
-\begin{itemize}
-    \resitem{\footnotesize Contributed to open source projects, most notably, kubernetes-sig/aws-alb-ingress-controller}
-    \resitem{\footnotesize Oraganized and gave several internal talks at my company on kubernetes}
-    \resitem{\footnotesize Favourite tools: linux + vim + tmux}
-    \resitem{\footnotesize Won singles in inter-company table tennis tournament}
-    \resitem{\footnotesize Hobbies include swimming and playing indian flute}
-\end{itemize}
 
 \end{document}
 

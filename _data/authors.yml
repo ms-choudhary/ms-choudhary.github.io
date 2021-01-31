@@ -4,7 +4,7 @@
 author1:
   # Replace <...> with your own (remove the < >)
   name:              Mohit Choudhary
-  email:             ms.choudhary2000@gmail.com
+  email:             msch0udhary@protonmail.com
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
@@ -22,7 +22,7 @@ author1:
   # Social media icons in sidebar.
   # Comment/uncommet to show/hide. Rearrange to change the order in which they appear.
   social:
-    email:           ms.choudhary2000@gmail.com
+    email:           msch0udhary@protonmail.com
     github:          ms-choudhary
     stackoverflow:   1246772/mohit
     twitter:         ms_ch0udhary
