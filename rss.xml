@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Mohit Choudhary</title>
+      <link>https://ms-choudhary.github.io</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://ms-choudhary.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 10 Jul 2018 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Microservices Secrets&#x2F;Configuration Management</title>
+          <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ms-choudhary.github.io/posts/mircoservices-secret-config-management/</link>
+          <guid>https://ms-choudhary.github.io/posts/mircoservices-secret-config-management/</guid>
+          <description xml:base="https://ms-choudhary.github.io/posts/mircoservices-secret-config-management/">&lt;blockquote&gt;
+&lt;p&gt;Your configuration management strategy will determine how you manage all of
+the changes that happen within your project. It thus records the evolution of
+your systems and applications. It will also govern how your team
+collaborates—a vital but sometimes overlooked consequence of any configuration
+management strategy.&lt;&#x2F;p&gt;
+&lt;p&gt;-- Continuous Delivery: Reliable Software Releases through Build, Test, and
+Deployment Automation&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Configuration management is one of the critical component of any deployment.
+Effective config management can greatly simplify your deployments. Ideally code
+should be configurable enough that it doesn&#x27;t hardcode any configuration
+(Although this is hard to get it right the first time, eventually you&#x27;ll figure
+out what should be configurable). Configuration, on the other hand, can be plug
+and played for different type of deployment. For example, in case of rails app,
+staging apps will need to read&#x2F;write from staging database, and production apps
+from production. &lt;a href=&quot;https:&#x2F;&#x2F;12factor.net&#x2F;config&quot;&gt;12 factor app&lt;&#x2F;a&gt; recommends that
+app reads configuration from environment variables, as they are both language
+and platform agnostic.&lt;&#x2F;p&gt;
+&lt;p&gt;Here are some ideal features any configuration management system should strive
+for:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;centralized, you use same mechanism to read secrets in pipeline jobs, in
+staging env or in production env, pretty much everywhere you need them
+(However, it can be good idea to separate production &amp;amp; staging configuration).&lt;&#x2F;li&gt;
+&lt;li&gt;rollbackable, you should be able to revert a config change back, ideally you
+shouldn&#x27;t lose any info, doesn&#x27;t matter what you change.&lt;&#x2F;li&gt;
+&lt;li&gt;encrypted, you should never store secrets in plain text. You should rotate the
+key frequently.&lt;&#x2F;li&gt;
+&lt;li&gt;auditing, you should be able to tell who changed what and when, when things go
+south&lt;&#x2F;li&gt;
+&lt;li&gt;principle of least privilege, service A shouldn&#x27;t be able to read secrets of
+service B, likewise developer of service A should only have read write access
+to secrets of service A.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;aws-parameter-store&quot;&gt;AWS Parameter Store&lt;&#x2F;h1&gt;
+&lt;p&gt;AWS Parameter Store is a simple service which stores strings either as plain
+text or encrypted. It has all good features of a centralized config management
+system. For example,&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;you can encrypt the values using custom KMS keys.&lt;&#x2F;li&gt;
+&lt;li&gt;you can track the changes made overtime.&lt;&#x2F;li&gt;
+&lt;li&gt;you can have fine grain control of who has what access (read or write) based
+on IAM policies.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;And since it&#x27;s AWS managed, you don&#x27;t have to worry about hassle of managing yet
+another service.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;chamber&quot;&gt;Chamber&lt;&#x2F;h1&gt;
+&lt;p&gt;That said, it&#x27;s not that user friendly to use, either via console or cli
+(Atleast was by the time of writing this post). Segmentio has built a cli tool
+around it, known as &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;segmentio&#x2F;chamber&quot;&gt;chamber&lt;&#x2F;a&gt;. The
+interface is really simple &amp;amp; powerful to use. For example, it can export all the
+secrets as environment variables before booting up application, which is nice.&lt;&#x2F;p&gt;
+&lt;p&gt;Chamber by default requires a custom KMS key (for encryption of values). It
+needs to be named spefically &lt;code&gt;parameter_store_key&lt;&#x2F;code&gt;. You can create it by running
+following terraform script (or equivalent steps in console or cli):&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;resource &amp;quot;aws_kms_key&amp;quot; &amp;quot;parameter_store&amp;quot; {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  description             = &amp;quot;Parameter store kms master key&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  deletion_window_in_days = 10
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  enable_key_rotation     = true
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;resource &amp;quot;aws_kms_alias&amp;quot; &amp;quot;parameter_store_alias&amp;quot; {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  name          = &amp;quot;alias&#x2F;parameter_store_key&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  target_key_id = &amp;quot;${aws_kms_key.parameter_store.id}&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Chamber segregates configuration based on services. For example, you can create
+following services:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# for brevity, this shows just one key, you can write multiple key values for
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;each service by repeating the writes
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# microservice a, contains only application config
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber write my_app_a app myapp-a
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# microservice b
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber write my_app_b app myapp-b
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# ci database, contains database connection config
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber write mysql_db_ci host ci_host
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# stag database
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber write mysql_db_staging host stag_host
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Each of your centralized datastores (RDS, ES, redis) can be separate services.
+Now, you can, run following:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# to boot app with ci-db in CI pipelines
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber exec my_app_a mysql_db_ci -- bundle exec rails test
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# to boot app in staging
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber exec my_app_b mysql_db_staging -- bundle exec rails server
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You can plug &lt;code&gt;mysql_db_ci&lt;&#x2F;code&gt; or &lt;code&gt;mysql_db_staging&lt;&#x2F;code&gt; as needed. If you use docker,
+you can add this in Dockerfile:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;CMD [&amp;quot;chamber&amp;quot;, &amp;quot;exec&amp;quot;, &amp;quot;my_app_a&amp;quot;, &amp;quot;mysql_db_ci&amp;quot;, &amp;quot;--&amp;quot;, &amp;quot;bundle exec rails s&amp;quot;]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;When you specify multiple services, chamber fetches keys of all services in
+order, merges them (later service key&#x27;s value overriding former in case of
+conflict). Finally it&#x27;s boots the application as it&#x27;s sub process with all env&#x27;s
+set. It also acts like a dumb init, and passes all signals to application
+process.&lt;&#x2F;p&gt;
+&lt;p&gt;IAM policies can be used to ensure principle of least priviledges. There are
+many ways to attach IAM role to your application container. If you&#x27;re running
+kubernetes, checkout &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jtblin&#x2F;kube2iam&quot;&gt;kube2iam&lt;&#x2F;a&gt; project. Or
+you can use &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aws&#x2F;amazon-ecs-agent&quot;&gt;EC2 Container Service
+Agent&lt;&#x2F;a&gt; (ecs-agent).&lt;&#x2F;p&gt;
+&lt;p&gt;Following policy ensures that container is only able to read secrets for service
+&lt;code&gt;{{ service_name }}&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    &amp;quot;Sid&amp;quot;: &amp;quot;&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    &amp;quot;Action&amp;quot;: [
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;        &amp;quot;ssm:GetParameters&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;        &amp;quot;ssm:GetParametersByPath&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    ],
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    &amp;quot;Resource&amp;quot;: &amp;quot;arn:aws:ssm:*:*:parameter&#x2F;&amp;lt;&amp;lt; service_name &amp;gt;&amp;gt;&#x2F;*&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;},
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;mozilla-sops&quot;&gt;Mozilla Sops&lt;&#x2F;h1&gt;
+&lt;p&gt;This system is good by itself. However, overtime, we noticed that managing keys
+(adding or updating) via chamber was not that user friendly.&lt;&#x2F;p&gt;
+&lt;p&gt;Chamber supports export &amp;amp; import of keys from json file. So instead of
+reading&#x2F;writing single keys, we created a json file per service and stored them
+in a common repository:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;├── production
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│   ├── .sops.yaml
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│   ├── grafana
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│   │   ├── grafana_app.json
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│   └── metabase
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│       └── metabase_app.json
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;└── staging
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    ├── .sops.yaml
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    ├── sentry
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    │   └── sentry_app.json
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    └── gitlab
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;        └── gitlab_app.json
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The data is encrypted using &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mozilla&#x2F;sops&quot;&gt;Mozilla Sops&lt;&#x2F;a&gt;
+(which is really cool, you can use your favourite editor, also it encrypts only
+the values, so that git diffs are meaningful). Sops supports many types of
+encryption, we use AWS KMS, because it&#x27;s simpler to manage.&lt;&#x2F;p&gt;
+&lt;p&gt;If you add following config in root dir, sops can use that KMS key by default
+for all new files (in this case we use single KMS key for all staging services):&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ cat staging&#x2F;.sops.yaml
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;creation_rules:
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  - path_regex: \.json$
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    kms: &amp;#39;&amp;lt;&amp;lt; arn_of_kms_key &amp;gt;&amp;gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You&#x27;ll have to create KMS key in AWS (see above on how to do that, also checkout
+readme of sops).&lt;&#x2F;p&gt;
+&lt;p&gt;Now you can create new service as&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;sops staging&#x2F;gitlab&#x2F;gitlab_app.json
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This will open editor, you can update the key &amp;amp; values here. If you open this
+file via normal editor, you can see that all values are encrypted.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    &amp;quot;access_token&amp;quot;:
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&amp;quot;ENC[AES256_GCM,data:C+daldrNWpQhDUolPjhM9yyAERuxylfycA56wOoe5Vs=,iv:5Lss6SqmE23fQ3YA7T97V+v0mXd&#x2F;cDNgM3FS24x&#x2F;JdE=,tag:tbP2quqao4I4D54HZhyFlw==,type:str]&amp;quot;,
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Finally following script syncs these keys to parameter store using chamber on
+each commit via pipeline job:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#! &#x2F;bin&#x2F;bash
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;set -o errexit
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;ACCOUNT=$1
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;if [[ ! &amp;quot;$ACCOUNT&amp;quot; =~ (production|staging) ]]; then
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  echo &amp;quot;error: param-sync: invalid account. Usage: $0 production|staging&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  exit 1
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;fi
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;synced() {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  git tag &amp;quot;$ACCOUNT-synced&amp;quot; -f
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  git push origin &amp;quot;$ACCOUNT-synced&amp;quot; -f
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;services_changed() {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  git diff --name-status &amp;quot;$ACCOUNT-synced..master&amp;quot; | cut -f2 | grep &amp;quot;$ACCOUNT&amp;quot; |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;grep &amp;#39;.json$&amp;#39;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;NO_SERVICES_CHANGED=$(services_changed | wc -l)
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;echo &amp;quot;$NO_SERVICES_CHANGED services changed:&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;services_changed || true
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;if [[ &amp;quot;$NO_SERVICES_CHANGED&amp;quot; == &amp;quot;0&amp;quot; ]]; then
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  echo &amp;quot;Skipping sync...&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;else
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  for SERVICE_FILE in $(services_changed); do
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    SERVICE=&amp;quot;$(basename &amp;quot;$SERVICE_FILE&amp;quot; | cut -f 1 -d &amp;#39;.&amp;#39;)&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    echo &amp;quot;$SERVICE:&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    sops -d &amp;quot;$SERVICE_FILE&amp;quot; | chamber import &amp;quot;$SERVICE&amp;quot; -
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  done
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;fi
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;echo &amp;quot;All changes synced. Tag current commit in git&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;synced
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;references&quot;&gt;References&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;segment.com&#x2F;blog&#x2F;the-right-way-to-manage-secrets&#x2F;&quot;&gt;The right way to manage secrets with
+AWS&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>Interfaces in Go</title>
+          <pubDate>Sat, 02 Jun 2018 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ms-choudhary.github.io/posts/interfaces-in-go/</link>
+          <guid>https://ms-choudhary.github.io/posts/interfaces-in-go/</guid>
+          <description xml:base="https://ms-choudhary.github.io/posts/interfaces-in-go/">&lt;p&gt;Go is a strongly typed language, which doesn&#x27;t support generics. Although not your common object oriented language like java, go does support types and methods on those types. There are no constructors, inheritance. The whole idea is to intentionally keep it light weight. Interface is something similar to what you&#x27;ve in other languages. This is how you define them:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;package io
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;type Writer interface {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    Write(p []byte) (n int, err error)
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Interfaces are contracts:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is another kind of type in Go called an interface type. An interface is an abstract type. It doesn’t expose the representation or internal structure of its values, or the set of basic operations they support; it reveals only some of their methods. When you have a value of an interface type, you know nothing about what it is; you know only what it can do, or more precisely, what behaviors are provided by its methods.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;As is expected, if a function expects &lt;code&gt;io.Writer&lt;&#x2F;code&gt; as argument. We can pass any of the concrete type which implements &lt;code&gt;io.Writer&lt;&#x2F;code&gt; to it. And based on the actual type, same function can either write to &lt;code&gt;os.Stdout&lt;&#x2F;code&gt; or a file or a string buffer. Thus, exhibiting polymorphism.&lt;&#x2F;p&gt;
+&lt;p&gt;So how do concrete types implement a particular interface. Well it need not to. Go interfaces are implicitly satisfied if a particular concrete type implements the methods of the interface (For example, if &lt;code&gt;os.File&lt;&#x2F;code&gt; implements a &lt;code&gt;Write&lt;&#x2F;code&gt; method with signature similar to above, it satisfies that interface). This way you can define a new interface and existing types will still satisfy it, if they support all methods. This is particularly usefully if you don&#x27;t own those types.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;internals&quot;&gt;Internals&lt;&#x2F;h1&gt;
+&lt;p&gt;Interface internally consists of two values: dynamic type and dynamic value. Like other types, interfaces are initialized, by default, to well defined value, where both &lt;em&gt;type&lt;&#x2F;em&gt; and &lt;em&gt;value&lt;&#x2F;em&gt; are &lt;code&gt;nil&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;var w io.Writer
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;i.ibb.co&#x2F;Nn8jnnb&#x2F;f7JtK8G.png&quot; alt=&quot;Full-width image&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;An interface is &lt;code&gt;nil&lt;&#x2F;code&gt; when it&#x27;s &lt;em&gt;type&lt;&#x2F;em&gt; value is &lt;code&gt;nil&lt;&#x2F;code&gt;. Just like pointers &amp;amp; other aggregate types, interfaces can be compared to &lt;code&gt;nil&lt;&#x2F;code&gt; (i.e., &lt;code&gt;w == nil&lt;&#x2F;code&gt; or &lt;code&gt;w != nil&lt;&#x2F;code&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;Interfaces can only be assigned to types which support all methods defined by the interface.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;var w io.Writer
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&#x2F;&#x2F; os.Stdout is *os.File pointing to standard output
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;w = os.Stdout
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;On assignment, &lt;em&gt;type&lt;&#x2F;em&gt; of interface value get set to the actual concrete type &amp;amp; &lt;em&gt;value&lt;&#x2F;em&gt; to it&#x27;s actual value.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;i.ibb.co&#x2F;drgKgbv&#x2F;O8uK3cF.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;When we execute a method on interface,&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;w.Write([]byte(&amp;quot;hello&amp;quot;))
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;compiler infers the address of the method from the actual concrete type and calls it with &lt;em&gt;value&lt;&#x2F;em&gt; as receiver. So &lt;code&gt;w.Write&lt;&#x2F;code&gt; internally executes &lt;code&gt;(*os.File).Write&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;equality&quot;&gt;Equality&lt;&#x2F;h1&gt;
+&lt;p&gt;Interface can be compared for equality using &lt;code&gt;==&lt;&#x2F;code&gt; &amp;amp; &lt;code&gt;!=&lt;&#x2F;code&gt;. Two interfaces are equal if both their &lt;em&gt;type&lt;&#x2F;em&gt; and &lt;em&gt;value&lt;&#x2F;em&gt; are equal.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
