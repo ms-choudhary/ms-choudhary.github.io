@@ -1,9 +1,10 @@
----
-layout: post
-title: Microservices Part I Secrets/Configuration Management
-image: https://www.nginx.com/wp-content/uploads/2017/06/wbr-webmicroservice-featured-500x300.png
-noindex: true
----
++++
+title ="Microservices Secrets/Configuration Management"
+date = "2018-07-10"
+
+[taxonomies]
+tags=["security", "aws"]
++++
 
 > Your configuration management strategy will determine how you manage all of
 > the changes that happen within your project. It thus records the evolution of
@@ -41,7 +42,7 @@ for:
   service B, likewise developer of service A should only have read write access
 to secrets of service A.
 
-#### AWS Parameter Store
+# AWS Parameter Store
 
 AWS Parameter Store is a simple service which stores strings either as plain
 text or encrypted. It has all good features of a centralized config management
@@ -54,7 +55,7 @@ system. For example,
 And since it's AWS managed, you don't have to worry about hassle of managing yet
 another service. 
 
-#### Chamber
+# Chamber
 
 That said, it's not that user friendly to use, either via console or cli
 (Atleast was by the time of writing this post). Segmentio has built a cli tool
@@ -144,7 +145,7 @@ Following policy ensures that container is only able to read secrets for service
 },
 ```
 
-#### Mozilla Sops
+# Mozilla Sops
 
 This system is good by itself. However, overtime, we noticed that managing keys
 (adding or updating) via chamber was not that user friendly.
@@ -244,7 +245,7 @@ echo "All changes synced. Tag current commit in git"
 synced
 ```
 
-### References
+# References
 
 - [The right way to manage secrets with
   AWS](https://segment.com/blog/the-right-way-to-manage-secrets/)
