@@ -26,7 +26,7 @@ theme = "toggle"
 menu = [
   { name = "/posts", url = "/posts", weight = 1 },
   { name = "/projects", url = "/projects", weight = 2 },
-  { name = "/TIL", url = "/tils", weight = 3 },
+  { name = "/notes", url = "/notes", weight = 3 },
   { name = "/books", url = "/books", weight = 4 },
   { name = "/papers", url = "/papers", weight = 5 },
 ]

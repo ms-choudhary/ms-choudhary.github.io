@@ -1,10 +1,11 @@
-+++
-title ="Interfaces in Go"
-date = "2018-06-02"
-
-[taxonomies]
-tags=["golang"]
-+++
+---
+title: Interfaces in Go
+date: 2025-09-01 13:10:09Z
+updated: 2025-09-24 11:29:59Z
+taxonomies:
+  tags:
+  - golang
+---
 
 Go is a strongly typed language, which doesn't support generics. Although not your common object oriented language like java, go does support types and methods on those types. There are no constructors, inheritance. The whole idea is to intentionally keep it light weight. Interface is something similar to what you've in other languages. This is how you define them:
 

@@ -1,10 +1,12 @@
-+++
-title ="Microservices Secrets/Configuration Management"
-date = "2018-07-10"
-
-[taxonomies]
-tags=["security", "aws"]
-+++
+---
+title: Microservices secret management
+date: 2025-09-01 13:10:37Z
+updated: 2025-09-24 11:30:03Z
+taxonomies:
+  tags:
+  - aws
+  - security
+---
 
 > Your configuration management strategy will determine how you manage all of
 > the changes that happen within your project. It thus records the evolution of
