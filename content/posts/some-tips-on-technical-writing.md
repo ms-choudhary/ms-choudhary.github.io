@@ -1,12 +1,13 @@
 ---
 title: Some tips on technical writing
 date: 2025-09-26 09:59:37Z
-updated: 2025-09-27 17:42:28Z
+updated: 2025-09-27 17:45:52Z
 taxonomies:
-  tags: []
+  tags:
+  - writing
 ---
 
-Writing is communication. And in tech field, is one of the crucial skills to master. If you want to share your ideas to wider audience, you need to write blogs, write proposals for conferences, and publish technical papers. 
+Writing is communication. And in tech field, it is one of the crucial skills to master. If you want to share your ideas to wider audience, you need to write blogs, write proposals for conferences, and publish technical papers. 
 
 There are two fundamental questions that needs to be asked, before you start writing:
 - Who your audience will be
