@@ -29,6 +29,7 @@ menu = [
   { name = "/notes", url = "/notes", weight = 3 },
   { name = "/books", url = "/books", weight = 4 },
   { name = "/papers", url = "/papers", weight = 5 },
+  { name = "/tags", url = "/tags", weight = 6 },
 ]
 
 socials = [
