@@ -1,0 +1,26 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                Files/Storage
+            
+        </title><meta content=Files/Storage property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/learn style=margin-right:.5em>/learn</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg style=filter:invert()> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>Files/Storage</div><div class=meta>Posted on <time>2024-11-23</time> :: Updated on <time>2025-09-28</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/linux/>linux</a> </span></div></div><section class=body><h3 id=useful-commands>Useful commands</h3><ul><li>Use <code>tac</code> or <code>tail -r</code> to reverse a file<li><code>cat -n filename</code> show file with linenumber<li><code>less -N filename or type -N in less window</code> show line numbers with less</ul><h3 id=copy-via-dd>Copy via dd</h3><pre class=z-code><code><span class="z-text z-plain">if 'if=' not present it reads from stdin
+</span><span class="z-text z-plain">if 'of=' not present it writes to stdout
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">bs = block size, default 512 bytes, change to 1 byte if you want to write single byte
+</span><span class="z-text z-plain">count = no. of block size bytes to write for eg if bs=1, count=4 will write 4 bytes
+</span><span class="z-text z-plain">seek = write at seek position to block size * number 
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">skip = skip block size * number while reading
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">printf '🐱' | dd of=/dev/xvd1 
+</span><span class="z-text z-plain">dd if=/dev/xvd1 count=1 2> /dev/null | hexdump -C
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">printf "$(dd if=/dev/xvd1 bs=1 count=4 2> /dev/null)\n"
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">printf '🐱' | dd of=/dev/xvd1 bs=1 seek=4
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">printf "$(dd if=/dev/xvd1 bs=1 count=8 2> /dev/null)\n"
+</span></code></pre></section></article></main></div></div><div class=right-content></div>

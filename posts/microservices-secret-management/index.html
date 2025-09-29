@@ -1,0 +1,105 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                Microservices secret management
+            
+        </title><meta content="Microservices secret management" property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/learn style=margin-right:.5em>/learn</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg style=filter:invert()> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>Microservices secret management</div><div class=meta>Posted on <time>2018-10-07</time> :: Updated on <time>2025-09-24</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/aws/>aws</a> <a class=post-tag href=https://ms-choudhary.github.io/tags/security/>security</a> </span></div></div><section class=body><blockquote><p>Your configuration management strategy will determine how you manage all of the changes that happen within your project. It thus records the evolution of your systems and applications. It will also govern how your team collaborates—a vital but sometimes overlooked consequence of any configuration management strategy.<p>-- Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation</blockquote><p>Configuration management is one of the critical component of any deployment. Effective config management can greatly simplify your deployments. Ideally code should be configurable enough that it doesn't hardcode any configuration (Although this is hard to get it right the first time, eventually you'll figure out what should be configurable). Configuration, on the other hand, can be plug and played for different type of deployment. For example, in case of rails app, staging apps will need to read/write from staging database, and production apps from production. <a href=https://12factor.net/config>12 factor app</a> recommends that app reads configuration from environment variables, as they are both language and platform agnostic.<p>Here are some ideal features any configuration management system should strive for:<ul><li>centralized, you use same mechanism to read secrets in pipeline jobs, in staging env or in production env, pretty much everywhere you need them (However, it can be good idea to separate production & staging configuration).<li>rollbackable, you should be able to revert a config change back, ideally you shouldn't lose any info, doesn't matter what you change.<li>encrypted, you should never store secrets in plain text. You should rotate the key frequently.<li>auditing, you should be able to tell who changed what and when, when things go south<li>principle of least privilege, service A shouldn't be able to read secrets of service B, likewise developer of service A should only have read write access to secrets of service A.</ul><h1 id=aws-parameter-store>AWS Parameter Store</h1><p>AWS Parameter Store is a simple service which stores strings either as plain text or encrypted. It has all good features of a centralized config management system. For example,<ul><li>you can encrypt the values using custom KMS keys.<li>you can track the changes made overtime.<li>you can have fine grain control of who has what access (read or write) based on IAM policies.</ul><p>And since it's AWS managed, you don't have to worry about hassle of managing yet another service.<h1 id=chamber>Chamber</h1><p>That said, it's not that user friendly to use, either via console or cli (Atleast was by the time of writing this post). Segmentio has built a cli tool around it, known as <a href=https://github.com/segmentio/chamber>chamber</a>. The interface is really simple & powerful to use. For example, it can export all the secrets as environment variables before booting up application, which is nice.<p>Chamber by default requires a custom KMS key (for encryption of values). It needs to be named spefically <code>parameter_store_key</code>. You can create it by running following terraform script (or equivalent steps in console or cli):<pre class=z-code><code><span class="z-text z-plain">resource "aws_kms_key" "parameter_store" {
+</span><span class="z-text z-plain">  description             = "Parameter store kms master key"
+</span><span class="z-text z-plain">  deletion_window_in_days = 10
+</span><span class="z-text z-plain">  enable_key_rotation     = true
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">resource "aws_kms_alias" "parameter_store_alias" {
+</span><span class="z-text z-plain">  name          = "alias/parameter_store_key"
+</span><span class="z-text z-plain">  target_key_id = "${aws_kms_key.parameter_store.id}"
+</span><span class="z-text z-plain">}
+</span></code></pre><p>Chamber segregates configuration based on services. For example, you can create following services:<pre class=z-code><code><span class="z-text z-plain"># for brevity, this shows just one key, you can write multiple key values for
+</span><span class="z-text z-plain">each service by repeating the writes
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># microservice a, contains only application config
+</span><span class="z-text z-plain">chamber write my_app_a app myapp-a
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># microservice b
+</span><span class="z-text z-plain">chamber write my_app_b app myapp-b
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># ci database, contains database connection config
+</span><span class="z-text z-plain">chamber write mysql_db_ci host ci_host
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># stag database
+</span><span class="z-text z-plain">chamber write mysql_db_staging host stag_host
+</span></code></pre><p>Each of your centralized datastores (RDS, ES, redis) can be separate services. Now, you can, run following:<pre class=z-code><code><span class="z-text z-plain"># to boot app with ci-db in CI pipelines
+</span><span class="z-text z-plain">chamber exec my_app_a mysql_db_ci -- bundle exec rails test
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># to boot app in staging
+</span><span class="z-text z-plain">chamber exec my_app_b mysql_db_staging -- bundle exec rails server
+</span></code></pre><p>You can plug <code>mysql_db_ci</code> or <code>mysql_db_staging</code> as needed. If you use docker, you can add this in Dockerfile:<pre class=z-code><code><span class="z-text z-plain">CMD ["chamber", "exec", "my_app_a", "mysql_db_ci", "--", "bundle exec rails s"]
+</span></code></pre><p>When you specify multiple services, chamber fetches keys of all services in order, merges them (later service key's value overriding former in case of conflict). Finally it's boots the application as it's sub process with all env's set. It also acts like a dumb init, and passes all signals to application process.<p>IAM policies can be used to ensure principle of least priviledges. There are many ways to attach IAM role to your application container. If you're running kubernetes, checkout <a href=https://github.com/jtblin/kube2iam>kube2iam</a> project. Or you can use <a href=https://github.com/aws/amazon-ecs-agent>EC2 Container Service Agent</a> (ecs-agent).<p>Following policy ensures that container is only able to read secrets for service <code>{{ service_name }}</code><pre class=z-code><code><span class="z-text z-plain">{
+</span><span class="z-text z-plain">    "Sid": "",
+</span><span class="z-text z-plain">    "Effect": "Allow",
+</span><span class="z-text z-plain">    "Action": [
+</span><span class="z-text z-plain">        "ssm:GetParameters",
+</span><span class="z-text z-plain">        "ssm:GetParametersByPath"
+</span><span class="z-text z-plain">    ],
+</span><span class="z-text z-plain">    "Resource": "arn:aws:ssm:*:*:parameter/&lt;&lt; service_name >>/*"
+</span><span class="z-text z-plain">},
+</span></code></pre><h1 id=mozilla-sops>Mozilla Sops</h1><p>This system is good by itself. However, overtime, we noticed that managing keys (adding or updating) via chamber was not that user friendly.<p>Chamber supports export & import of keys from json file. So instead of reading/writing single keys, we created a json file per service and stored them in a common repository:<pre class=z-code><code><span class="z-text z-plain">├── production
+</span><span class="z-text z-plain">│   ├── .sops.yaml
+</span><span class="z-text z-plain">│   ├── grafana
+</span><span class="z-text z-plain">│   │   ├── grafana_app.json
+</span><span class="z-text z-plain">│   └── metabase
+</span><span class="z-text z-plain">│       └── metabase_app.json
+</span><span class="z-text z-plain">└── staging
+</span><span class="z-text z-plain">    ├── .sops.yaml
+</span><span class="z-text z-plain">    ├── sentry
+</span><span class="z-text z-plain">    │   └── sentry_app.json
+</span><span class="z-text z-plain">    └── gitlab
+</span><span class="z-text z-plain">        └── gitlab_app.json
+</span></code></pre><p>The data is encrypted using <a href=https://github.com/mozilla/sops>Mozilla Sops</a> (which is really cool, you can use your favourite editor, also it encrypts only the values, so that git diffs are meaningful). Sops supports many types of encryption, we use AWS KMS, because it's simpler to manage.<p>If you add following config in root dir, sops can use that KMS key by default for all new files (in this case we use single KMS key for all staging services):<pre class=z-code><code><span class="z-text z-plain">$ cat staging/.sops.yaml
+</span><span class="z-text z-plain">creation_rules:
+</span><span class="z-text z-plain">  - path_regex: \.json$
+</span><span class="z-text z-plain">    kms: '&lt;&lt; arn_of_kms_key >>'
+</span></code></pre><p>You'll have to create KMS key in AWS (see above on how to do that, also checkout readme of sops).<p>Now you can create new service as<pre class=z-code><code><span class="z-text z-plain">sops staging/gitlab/gitlab_app.json
+</span></code></pre><p>This will open editor, you can update the key & values here. If you open this file via normal editor, you can see that all values are encrypted.<pre class=z-code><code><span class="z-text z-plain">    "access_token":
+</span><span class="z-text z-plain">"ENC[AES256_GCM,data:C+daldrNWpQhDUolPjhM9yyAERuxylfycA56wOoe5Vs=,iv:5Lss6SqmE23fQ3YA7T97V+v0mXd/cDNgM3FS24x/JdE=,tag:tbP2quqao4I4D54HZhyFlw==,type:str]",
+</span></code></pre><p>Finally following script syncs these keys to parameter store using chamber on each commit via pipeline job:<pre class=z-code><code><span class="z-text z-plain">#! /bin/bash
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">set -o errexit
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">ACCOUNT=$1
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">if [[ ! "$ACCOUNT" =~ (production|staging) ]]; then
+</span><span class="z-text z-plain">  echo "error: param-sync: invalid account. Usage: $0 production|staging"
+</span><span class="z-text z-plain">  exit 1
+</span><span class="z-text z-plain">fi
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">synced() {
+</span><span class="z-text z-plain">  git tag "$ACCOUNT-synced" -f
+</span><span class="z-text z-plain">  git push origin "$ACCOUNT-synced" -f
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">services_changed() {
+</span><span class="z-text z-plain">  git diff --name-status "$ACCOUNT-synced..master" | cut -f2 | grep "$ACCOUNT" |
+</span><span class="z-text z-plain">grep '.json$'
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">NO_SERVICES_CHANGED=$(services_changed | wc -l)
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">echo "$NO_SERVICES_CHANGED services changed:"
+</span><span class="z-text z-plain">services_changed || true
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">if [[ "$NO_SERVICES_CHANGED" == "0" ]]; then
+</span><span class="z-text z-plain">  echo "Skipping sync..."
+</span><span class="z-text z-plain">else
+</span><span class="z-text z-plain">  for SERVICE_FILE in $(services_changed); do
+</span><span class="z-text z-plain">    SERVICE="$(basename "$SERVICE_FILE" | cut -f 1 -d '.')"
+</span><span class="z-text z-plain">    echo "$SERVICE:"
+</span><span class="z-text z-plain">    sops -d "$SERVICE_FILE" | chamber import "$SERVICE" -
+</span><span class="z-text z-plain">  done
+</span><span class="z-text z-plain">fi
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">echo "All changes synced. Tag current commit in git"
+</span><span class="z-text z-plain">synced
+</span></code></pre><h1 id=references>References</h1><ul><li><a href=https://segment.com/blog/the-right-way-to-manage-secrets/>The right way to manage secrets with AWS</a></ul></section></article></main></div></div><div class=right-content></div>

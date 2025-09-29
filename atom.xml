@@ -1,0 +1,1104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Mohit Choudhary</title>
+    <link rel="self" type="application/atom+xml" href="https://ms-choudhary.github.io/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-09-29T17:31:16+00:00</updated>
+    <id>https://ms-choudhary.github.io/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Some tips on technical writing</title>
+        <published>2025-09-26T09:59:37+00:00</published>
+        <updated>2025-09-27T17:45:52+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/posts/some-tips-on-technical-writing/"/>
+        <id>https://ms-choudhary.github.io/posts/some-tips-on-technical-writing/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/posts/some-tips-on-technical-writing/">&lt;p&gt;Writing is communication. And in tech field, it is one of the crucial skills to master. If you want to share your ideas to wider audience, you need to write blogs, write proposals for conferences, and publish technical papers.&lt;&#x2F;p&gt;
+&lt;p&gt;There are two fundamental questions that needs to be asked, before you start writing:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Who your audience will be&lt;&#x2F;li&gt;
+&lt;li&gt;What you wish to communicate&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Other things (like structure and content) generally follow these decisions.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;know-your-audience&quot;&gt;Know your audience&lt;&#x2F;h2&gt;
+&lt;p&gt;Technical writing is in some sense similar to software engineering, just like you need to understand the who the users for your product will be, you need to know your audience will be.&lt;&#x2F;p&gt;
+&lt;p&gt;Most of the times the audience is our future selves. Where documentation written today serves as a point of reference in future.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s always better to state the assumptions made before hand. And not place any assumption on reader&#x27;s prior knowledge.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;online-documentation&quot;&gt;Online Documentation&lt;&#x2F;h2&gt;
+&lt;p&gt;Most of the stuff we write is meant to be read online in a web browser. There are certain tendencies in web readers, they generally tend to:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;skim through the content&lt;&#x2F;li&gt;
+&lt;li&gt;extract the important parts&lt;&#x2F;li&gt;
+&lt;li&gt;ignore the rest&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;In such cases, you should jump to heart of matter quickly. Keep the sentences short. And use lots of smaller paragraphs rather than a lengthy blocks, generally it doesn&#x27;t put a lot of cognitive load on the reader.&lt;&#x2F;p&gt;
+&lt;p&gt;Resist the temptation to use illustrations, they should be used as supplements rather than for information. If you are struggling to explain the concept in simpler understandable terms, maybe you do not understand it properly.&lt;&#x2F;p&gt;
+&lt;p&gt;If you find it complex to explain something, follow a similar approach to programming and break it into multiple smaller parts. And try to explain each of them individually.&lt;&#x2F;p&gt;
+&lt;p&gt;Some in general tips,&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;if you&#x27;re documenting command invocation, it&#x27;s good idea to include actual command and it&#x27;s output rather than fictiously fabricated one.&lt;&#x2F;li&gt;
+&lt;li&gt;if you&#x27;re writing a FAQ style document, include questions which your reader might want to ask, rather than what you think they might ask.&lt;&#x2F;li&gt;
+&lt;li&gt;for project README, it&#x27;s good to include:
+&lt;ul&gt;
+&lt;li&gt;Short summary of what the tool does&lt;&#x2F;li&gt;
+&lt;li&gt;Installation steps&lt;&#x2F;li&gt;
+&lt;li&gt;Example invocations with expected output&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>How to read a paper</title>
+        <published>2025-09-26T09:58:17+00:00</published>
+        <updated>2025-09-29T17:28:39+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/learn/how-to-read-a-paper/"/>
+        <id>https://ms-choudhary.github.io/learn/how-to-read-a-paper/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/learn/how-to-read-a-paper/">&lt;h2 id=&quot;why-you-should-read-research-papers&quot;&gt;Why you should read research papers&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;To keep up to date with latest developments in your field&lt;&#x2F;li&gt;
+&lt;li&gt;Generally a great learning, enhances your system design skills, and help you become more creative problem solver&lt;&#x2F;li&gt;
+&lt;li&gt;Do a literature survey of new field you&#x27;re interested in&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;three-pass-approach&quot;&gt;Three pass approach&lt;&#x2F;h2&gt;
+&lt;p&gt;Instead of reading a research paper end to end, consider reading it in passes to grasp the most out of it.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;first-pass&quot;&gt;First Pass&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Generally takes 5-10 mins&lt;&#x2F;li&gt;
+&lt;li&gt;Gives a high level overview of what it&#x27;s about and helps you decide if it&#x27;s really worth your time&lt;&#x2F;li&gt;
+&lt;li&gt;First, carefully read abstract &amp;amp; introduction&lt;&#x2F;li&gt;
+&lt;li&gt;Read section &amp;amp; sub-section headings, glance at figures, ignore everything else&lt;&#x2F;li&gt;
+&lt;li&gt;Read conclusion&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;second-pass&quot;&gt;Second pass&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Should take about an hour or so&lt;&#x2F;li&gt;
+&lt;li&gt;Read much more carefully this time, highlighting what you think are the main points. Also free free to add comments&#x2F;notes in the margin.&lt;&#x2F;li&gt;
+&lt;li&gt;You can chose to ignore the proofs&lt;&#x2F;li&gt;
+&lt;li&gt;After this, you should be able to summarize what the paper is about&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;second-and-half-pass&quot;&gt;Second and half pass&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Re-read your highlights from previous step, take hand written notes of what you think are the main points&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;third-pass&quot;&gt;Third pass&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;(Use your notes rather than paper itself)&lt;&#x2F;li&gt;
+&lt;li&gt;Virtually reimplement the paper, that is, making same assumptions as author try to recreate the work&lt;&#x2F;li&gt;
+&lt;li&gt;Identify and challenge each assumption in every statement&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;literature-survey&quot;&gt;Literature survey&lt;&#x2F;h2&gt;
+&lt;p&gt;Some tips on finding important papers in a field:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start with public search engines (google research or arxiv), based on key-words find 3-5 recent papers&lt;&#x2F;li&gt;
+&lt;li&gt;From the references, find shared citations &amp;amp; repeated authors, these are key research papers &amp;amp; researchers in the area&lt;&#x2F;li&gt;
+&lt;li&gt;Go to the researchers website, find the conferences where they published their work&lt;&#x2F;li&gt;
+&lt;li&gt;Go to conferences website, it should contain list of important papers&lt;&#x2F;li&gt;
+&lt;li&gt;Iterate&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Initrd</title>
+        <published>2025-09-12T10:45:50+00:00</published>
+        <updated>2025-09-24T11:58:09+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/initrd/"/>
+        <id>https://ms-choudhary.github.io/notes/initrd/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/initrd/">&lt;h2 id=&quot;extract&quot;&gt;Extract&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;xzcat initrd.img | cpio -id
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;-i extract
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;-d create dirs
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;check-content&quot;&gt;Check content&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# show content of initramfs of current kernel
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;lsinitrd
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# show content of specific initramfs file
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;lsinitrd path&#x2F;to&#x2F;initramfs.img
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Anaconda</title>
+        <published>2025-09-05T10:05:21+00:00</published>
+        <updated>2025-09-07T13:20:21+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/anaconda/"/>
+        <id>https://ms-choudhary.github.io/notes/anaconda/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/anaconda/">&lt;p&gt;Anaconda is the OS installer for RHEL based systems.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ssh-to-server-for-troubleshooting&quot;&gt;SSH to server for troubleshooting&lt;&#x2F;h3&gt;
+&lt;p&gt;(This only works if kernel arg: &lt;code&gt;inst.sshd&lt;&#x2F;code&gt; was set while live booting OS)&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;ssh root@server-ip
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;tmux attach
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;check ks logs: &#x2F;var&#x2F;run&#x2F;install&#x2F;ks.cfg
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;retry-anaconda-installer-from-failed-server&quot;&gt;Retry anaconda installer from failed server&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;anaconda --kickstart &#x2F;path&#x2F;to&#x2F;ks.cfg
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>DHCPD</title>
+        <published>2025-04-08T08:27:13+00:00</published>
+        <updated>2025-09-24T11:58:22+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/dhcpd/"/>
+        <id>https://ms-choudhary.github.io/notes/dhcpd/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/dhcpd/">&lt;ul&gt;
+&lt;li&gt;leases are stored at path: &lt;code&gt;&#x2F;var&#x2F;lib&#x2F;dhcpd&#x2F;dhcpd.leases&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Grub</title>
+        <published>2025-04-08T08:08:22+00:00</published>
+        <updated>2025-09-24T11:51:56+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/grub/"/>
+        <id>https://ms-choudhary.github.io/notes/grub/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/grub/">&lt;h4 id=&quot;update-kernel-options-via-grub&quot;&gt;Update kernel options via grub&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Edit file &lt;code&gt;&#x2F;etc&#x2F;default&#x2F;grub&lt;&#x2F;code&gt; with necessary change&lt;&#x2F;li&gt;
+&lt;li&gt;Finally run &lt;code&gt;grub2-mkconfig -o &#x2F;boot&#x2F;grub2&#x2F;grub.cfg&lt;&#x2F;code&gt; (on rhel, centos) or &lt;code&gt;update-grub&lt;&#x2F;code&gt; on debian, ubuntu
+&lt;ul&gt;
+&lt;li&gt;if it doesn&#x27;t work try adding option &lt;code&gt;--update-bls-cmdline&lt;&#x2F;code&gt; to grub2-mkconfig&lt;&#x2F;li&gt;
+&lt;li&gt;for efi the path could be different: ``&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>SSH</title>
+        <published>2025-03-30T05:35:19+00:00</published>
+        <updated>2025-09-24T11:52:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/ssh/"/>
+        <id>https://ms-choudhary.github.io/notes/ssh/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/ssh/">&lt;ul&gt;
+&lt;li&gt;If your connection to remote server is hung and you can&#x27;t do anything: &lt;code&gt;Enter&lt;&#x2F;code&gt; &lt;code&gt;~&lt;&#x2F;code&gt; &lt;code&gt;.&lt;&#x2F;code&gt; This forces the client to close the connection.
+&lt;ul&gt;
+&lt;li&gt;This doesn&#x27;t work on nested ssh connections!&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Tcpdump</title>
+        <published>2025-03-29T06:45:48+00:00</published>
+        <updated>2025-09-24T11:52:04+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/tcpdump/"/>
+        <id>https://ms-choudhary.github.io/notes/tcpdump/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/tcpdump/">&lt;ul&gt;
+&lt;li&gt;Check &lt;code&gt;man pcap-filter&lt;&#x2F;code&gt; for tcpdump expression syntax and fields&lt;&#x2F;li&gt;
+&lt;li&gt;Capture file&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;tcpdump -w capture.pcap -i any host google.com
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Vim</title>
+        <published>2025-03-22T06:11:06+00:00</published>
+        <updated>2025-03-22T06:11:48+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/vim/"/>
+        <id>https://ms-choudhary.github.io/notes/vim/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/vim/">&lt;h3 id=&quot;no-paste&quot;&gt;No paste&lt;&#x2F;h3&gt;
+&lt;p&gt;To ignore indenting while pasting text in vim&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;:set paste
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;:set nopaste
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Package Management</title>
+        <published>2024-11-24T03:52:22+00:00</published>
+        <updated>2025-09-24T05:21:44+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/package-management/"/>
+        <id>https://ms-choudhary.github.io/notes/package-management/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/package-management/">&lt;h3 id=&quot;debian-dpkg&quot;&gt;Debian dpkg&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# list inventory of packages and their version installed
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ dpkg -l
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# List file contents of a package
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ dpkg -L tcpdump
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# Reverse lookup, which package provides this file
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ dpkg-query -S &#x2F;usr&#x2F;bin&#x2F;dig
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Packaging systems can keep track of dependencies only if all softwares are installed via package management. If for eg, awscli was installed outside package management, dpkg won&#x27;t know if upgrading python will break awscli.&lt;&#x2F;p&gt;
+&lt;p&gt;gpg keys are used to check the signature to validate if package was signed by trusted entity.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;fedora-rpm&quot;&gt;Fedora rpm&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# list inventory
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ rpm -qa
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# list content 
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ rpm -ql tcpdump
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# verify integrity of a package; if it was modified
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ sudo rpm -V sudo
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ sudo rpm -Va  # all packages
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;netbsd-vulnerability-for-packages&quot;&gt;Netbsd vulnerability for packages&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ pkg_admin -V -v fetch-pkg-vulnerabilities
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ pkg_admin audit
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Files&#x2F;Storage</title>
+        <published>2024-11-23T09:47:48+00:00</published>
+        <updated>2025-09-28T11:58:28+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/files-storage/"/>
+        <id>https://ms-choudhary.github.io/notes/files-storage/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/files-storage/">&lt;h3 id=&quot;useful-commands&quot;&gt;Useful commands&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;tac&lt;&#x2F;code&gt; or &lt;code&gt;tail -r&lt;&#x2F;code&gt; to reverse a file&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;cat -n filename&lt;&#x2F;code&gt; show file with linenumber&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;less -N filename or type -N in less window&lt;&#x2F;code&gt; show line numbers with less&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;copy-via-dd&quot;&gt;Copy via dd&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;if &amp;#39;if=&amp;#39; not present it reads from stdin
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;if &amp;#39;of=&amp;#39; not present it writes to stdout
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;bs = block size, default 512 bytes, change to 1 byte if you want to write single byte
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;count = no. of block size bytes to write for eg if bs=1, count=4 will write 4 bytes
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;seek = write at seek position to block size * number 
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;skip = skip block size * number while reading
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;printf &amp;#39;🐱&amp;#39; | dd of=&#x2F;dev&#x2F;xvd1 
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;dd if=&#x2F;dev&#x2F;xvd1 count=1 2&amp;gt; &#x2F;dev&#x2F;null | hexdump -C
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;printf &amp;quot;$(dd if=&#x2F;dev&#x2F;xvd1 bs=1 count=4 2&amp;gt; &#x2F;dev&#x2F;null)\n&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;printf &amp;#39;🐱&amp;#39; | dd of=&#x2F;dev&#x2F;xvd1 bs=1 seek=4
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;printf &amp;quot;$(dd if=&#x2F;dev&#x2F;xvd1 bs=1 count=8 2&amp;gt; &#x2F;dev&#x2F;null)\n&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Certificates</title>
+        <published>2024-11-23T09:43:29+00:00</published>
+        <updated>2025-09-29T17:31:16+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/certificates/"/>
+        <id>https://ms-choudhary.github.io/notes/certificates/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/certificates/">&lt;h3 id=&quot;create-a-new-root-ca-then-create-a-new-certificate-and-private-key-using-step-cli&quot;&gt;Create a new root CA, then create a new certificate and private key using step cli&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ step certificate create root-ca root-ca.crt root-ca.key --profile root-ca
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ step certificate create foo foo.crt foo.key --profile leaf \
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;            --ca root-ca.crt --ca-key root-ca.key --san 10.230.32.1 --san 10.230.32.2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;openssl-inspect-certificate&quot;&gt;Openssl inspect certificate&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ openssl x509 -in input.crt -noout -text
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;remove-passphrase-from-a-private-key&quot;&gt;Remove passphrase from a private key&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ openssl ec -in input.key -out output.key
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Time</title>
+        <published>2024-11-23T09:41:19+00:00</published>
+        <updated>2025-09-07T13:11:15+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/time/"/>
+        <id>https://ms-choudhary.github.io/notes/time/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/time/">&lt;h3 id=&quot;set-systemwide-timezone-on-linux&quot;&gt;Set systemwide timezone on linux&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;&#x2F;etc&#x2F;localtime&lt;&#x2F;code&gt; symlinks to timezone file in &#x2F;usr&#x2F;share&#x2F;zoneinfo. Changing the link to different timezone changes the systemwide timezone info.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;msc@debian:~$ ls -l &#x2F;etc&#x2F;localtime
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;lrwxrwxrwx 1 root root 32 Nov 15 10:39 &#x2F;etc&#x2F;localtime -&amp;gt; &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Kolkata
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;set-system-time-on-linux&quot;&gt;Set system time on linux&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;date -s &amp;#39;Sat Nov 23 15:12:58 IST 2024&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Python</title>
+        <published>2024-11-18T15:45:13+00:00</published>
+        <updated>2025-09-29T02:36:03+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/python/"/>
+        <id>https://ms-choudhary.github.io/notes/python/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/python/">&lt;h3 id=&quot;modern-virtual-env&quot;&gt;modern virtual env&lt;&#x2F;h3&gt;
+&lt;p&gt;https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;pipenv&#x2F;#usage-examples&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>IDrac&#x2F;Racadm</title>
+        <published>2024-11-17T06:30:42+00:00</published>
+        <updated>2025-09-24T11:52:21+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/idrac-racadm/"/>
+        <id>https://ms-choudhary.github.io/notes/idrac-racadm/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/idrac-racadm/">&lt;p&gt;iDRAC is a separate BMC chip which integrates on the motherboard, and provides users to control a server remotely. You could build a similar feature with piKVM, &lt;a href=&quot;https:&#x2F;&#x2F;docs.pikvm.org&#x2F;v2&#x2F;&quot;&gt;diy&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Connect the video cable.&lt;&#x2F;li&gt;
+&lt;li&gt;Integrate circuit to motherboard power supply&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;With serial over lan, you can get serial console remotely for troubleshooting purposes.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;alias&quot;&gt;Alias&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;alias myracadm=&amp;quot;racadm -r 10.118.16.5 -u root -p calvin --nocertwarn&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;check-sel-logs&quot;&gt;Check sel logs&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&#x2F;opt&#x2F;index&#x2F;ops-bin&#x2F;rracadm.sh pro-XX-Y.dcaux.indexww.com getsel -o
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;check-cpu-reset&quot;&gt;Check cpu reset&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&#x2F;opt&#x2F;index&#x2F;ops-bin&#x2F;rracadm.sh db-maria-bh2ingest-3 lclog view -n 10 -k CPU
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;set-first-boot-to-pxe&quot;&gt;Set first boot to pxe&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;racadm -r 10.118.16.3 -u root -p calvin set idrac.serverboot.firstbootdevice PXE
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;pxe-device&quot;&gt;pxe device&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;.&#x2F;racadm get BIOS.PxeDev1Settings.PxeDev1Interface
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;.&#x2F;racadm set BIOS.PxeDev1Settings.PxeDev1Interface &amp;lt;interface name, something like NIC.Slot.1-1&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;powercycle&quot;&gt;Powercycle&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;racadm -r 10.118.16.3 -u root -p calvin serveraction powercycle
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;jobqueue&quot;&gt;Jobqueue&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;myracadm jobqueue create BIOS.Setup.1-1 -r pwrcycle
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;racreset&quot;&gt;racreset&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;racadm racreset soft
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;via-ssh&quot;&gt;Via ssh&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;ssh root@idrac_ip
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;ssh -o KexAlgorithms=curve25519-sha256 root@idrac_ip
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;console com2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;ctrl + \ to exit&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;system-info&quot;&gt;System info&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;racadm getsysinfo
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Qemu</title>
+        <published>2024-11-15T16:48:49+00:00</published>
+        <updated>2025-09-24T11:52:25+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/qemu/"/>
+        <id>https://ms-choudhary.github.io/notes/qemu/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/qemu/">&lt;h3 id=&quot;snapshots&quot;&gt;Snapshots&lt;&#x2F;h3&gt;
+&lt;p&gt;You can locate the UTM data disk for a VM: &lt;code&gt;~&#x2F;Library&#x2F;Containers&#x2F;com.utmapp.UTM&#x2F;Data&#x2F;Documents&#x2F;Linux.utm&#x2F;Data&lt;&#x2F;code&gt;, which is generally a qcow2 image.&lt;&#x2F;p&gt;
+&lt;p&gt;Take a snapshot with compression:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;qemu-img snapshot F89035CE-DEF9-49D7-97F8-7EC0C2F3F9D9.qcow2 -c snapshot1
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;qemu-img snapshot F89035CE-DEF9-49D7-97F8-7EC0C2F3F9D9.qcow2 -l
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;To revert back the disk:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;qemu-img snapshot F89035CE-DEF9-49D7-97F8-7EC0C2F3F9D9.qcow2 -a snapshot1
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Macos</title>
+        <published>2024-11-13T04:59:36+00:00</published>
+        <updated>2025-09-24T11:52:31+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/macos/"/>
+        <id>https://ms-choudhary.github.io/notes/macos/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/macos/">&lt;h3 id=&quot;keyboard&quot;&gt;Keyboard&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Settings -&amp;gt; Keyboard -&amp;gt; Key repeat rate&lt;&#x2F;code&gt; controls at what speed when pressing a key the input is sent, if you make it high, cursor will move faster when you press let&#x27;s say down key etc.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;safe-mode-boot&quot;&gt;Safe mode boot&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;To boot in safe mode, shutdown the mac&lt;&#x2F;li&gt;
+&lt;li&gt;Keep pressing the power button till, it loads startup option&lt;&#x2F;li&gt;
+&lt;li&gt;Select the drive and continue&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;directories&quot;&gt;Directories&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;~&#x2F;Library&#x2F;Caches&lt;&#x2F;code&gt; all system wide caches for applications&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;~&#x2F;Library&#x2F;Preferences&lt;&#x2F;code&gt; plist files&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Cobbler</title>
+        <published>2024-10-18T04:49:20+00:00</published>
+        <updated>2025-09-29T02:35:54+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/cobbler/"/>
+        <id>https://ms-choudhary.github.io/notes/cobbler/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/cobbler/">&lt;p&gt;Cobbler is a tool used for provisioning bare metal servers.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;add-cobbler-system&quot;&gt;Add cobbler system&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;cobbler system add --name=&amp;quot;k8s1ny-w-19.indexww.com&amp;quot; --hostname=&amp;quot;k8s1ny-w-19.indexww.com&amp;quot; --profile=&amp;quot;K8S-CP-R9&amp;quot; --interface=p1p1 --ip-address=10.129.0.22 --mac=64:9D:99:B2:2F:C8 --static=1 --netmask=255.255.255.0 --gateway=10.129.0.250 --name-servers=&amp;quot;192.40.39.191 1.1.1.1&amp;quot;  --name-servers-search=&amp;quot;indexexchange.com casalemedia.com indexww.com&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Terraform</title>
+        <published>2024-09-24T09:48:21+00:00</published>
+        <updated>2025-09-24T11:52:38+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/terraform/"/>
+        <id>https://ms-choudhary.github.io/notes/terraform/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/terraform/">&lt;h3 id=&quot;for-each-and-count-meta-argument&quot;&gt;For each and count meta argument&lt;&#x2F;h3&gt;
+&lt;p&gt;Ideally each block maps to one infrastructure component. There&#x27;re two ways to create map multipe by just one block.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;count&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;resource &amp;quot;aws_instance&amp;quot; &amp;quot;server&amp;quot; {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  count = 4 # create four similar EC2 instances
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  ami           = &amp;quot;ami-a1b2c3d4&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  instance_type = &amp;quot;t2.micro&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  tags = {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    Name = &amp;quot;Server ${count.index}&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  }
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;for_each&lt;&#x2F;code&gt; - accepts a map, list or set&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;resource &amp;quot;azurerm_resource_group&amp;quot; &amp;quot;rg&amp;quot; {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  for_each = tomap({
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    a_group       = &amp;quot;eastus&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    another_group = &amp;quot;westus2&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  })
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  name     = each.key
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  location = each.value
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Terminal&#x2F;Shell</title>
+        <published>2024-09-24T09:47:30+00:00</published>
+        <updated>2025-09-28T11:57:39+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/terminal-shell/"/>
+        <id>https://ms-choudhary.github.io/notes/terminal-shell/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/terminal-shell/">&lt;h3 id=&quot;keyboard-shortcuts&quot;&gt;Keyboard Shortcuts&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;CTRL-A&lt;&#x2F;code&gt; = go to the begining of the line&lt;br &#x2F;&gt;
+&lt;code&gt;CTRL-E&lt;&#x2F;code&gt; = go to the end of the line&lt;br &#x2F;&gt;
+&lt;code&gt;CTRL-U&lt;&#x2F;code&gt; = delete everything till begining&lt;br &#x2F;&gt;
+&lt;code&gt;CTRL-K&lt;&#x2F;code&gt; = delete everyting till end&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;job-control&quot;&gt;Job control&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;disown - removes the job from list of running jobs, so it doesn&#x27;t get killed when you exit the terminal&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;terminal&quot;&gt;Terminal&lt;&#x2F;h3&gt;
+&lt;p&gt;Terminal is a pair master and slave devices. Slave devices are like dumb clients without any intelligence just relaying what user types to the server and showing back the response.&lt;&#x2F;p&gt;
+&lt;p&gt;Now when you type text on the terminal, it&#x27;s relayed back to master device, which gives the information to program running. There&#x27;re escape sequences to display text in bold or color, cursor movement etc. When you type &lt;code&gt;Ctrl-C&lt;&#x2F;code&gt; or &lt;code&gt;Ctrl-Z&lt;&#x2F;code&gt; it sends a ascii signal &lt;code&gt;\x03&lt;&#x2F;code&gt; and &lt;code&gt;26&lt;&#x2F;code&gt;. This is intercepted by kernel (and not userspace program like shell), and it sends &lt;code&gt;SIGINT&lt;&#x2F;code&gt; signal to process group in the terminal.&lt;&#x2F;p&gt;
+&lt;p&gt;When the master device starts, it makes this sys call:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;syscall.Syscall(
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    syscall.SYS_IOCTL,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    tty.Fd(),
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    syscall.TIOCSWINSZ,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    uintptr(unsafe.Pointer(&amp;amp;resizeMessage)),
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;this calls the ioctl system call. To check terminal parameters, you can type:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;stty -a
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;or
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;tputs cols # for columns 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;when you change the window size of the terminal, kernel sends a signal &lt;code&gt;SIGWINCH&lt;&#x2F;code&gt; which resets the stty cols etc. The side effect of this not being correctly set will result in overwriting of text of same line and not changing to next line on inputting long text in the terminal.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Git</title>
+        <published>2024-09-24T09:46:50+00:00</published>
+        <updated>2025-06-10T11:11:35+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/git/"/>
+        <id>https://ms-choudhary.github.io/notes/git/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/git/">&lt;h3 id=&quot;merge-strategies&quot;&gt;Merge Strategies&lt;&#x2F;h3&gt;
+&lt;p&gt;If there&#x27;re too many conflicts, and you just want to either accept our&#x2F;their code, you can use flag &lt;code&gt;-X theirs&lt;&#x2F;code&gt; or &lt;code&gt;-X ours&lt;&#x2F;code&gt; with all git commands doing either merge&#x2F;rebase.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Currently on&lt;&#x2F;th&gt;&lt;th&gt;Command&lt;&#x2F;th&gt;&lt;th&gt;Strategy&lt;&#x2F;th&gt;&lt;th&gt;Outcome&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;master&lt;&#x2F;td&gt;&lt;td&gt;git merge feature&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;-Xtheirs&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td&gt;Keep changes from feature branch&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;master&lt;&#x2F;td&gt;&lt;td&gt;git merge feature&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;-Xours&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td&gt;keep changes from master branch&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;feature&lt;&#x2F;td&gt;&lt;td&gt;git rebase master&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;-Xtheirs&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td&gt;Keep changes from feature branch&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;feature&lt;&#x2F;td&gt;&lt;td&gt;git rebase master&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;-Xours&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td&gt;keep changes from master branch&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h3 id=&quot;show-current-head&quot;&gt;Show current head&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;git rev-parse HEAD
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Golang</title>
+        <published>2024-09-24T09:32:10+00:00</published>
+        <updated>2025-05-06T07:32:03+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/notes/golang/"/>
+        <id>https://ms-choudhary.github.io/notes/golang/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/notes/golang/">&lt;h3 id=&quot;commandline&quot;&gt;CommandLine&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;After parsing flags you can get other arguments via: &lt;code&gt;flag.Args()&lt;&#x2F;code&gt; (array) or &lt;code&gt;flag.Arg(i)&lt;&#x2F;code&gt; specific arg. &lt;code&gt;flag.Narg&lt;&#x2F;code&gt; = number of args&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;time&quot;&gt;Time&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pkg.go.dev&#x2F;time@go1.23.2#Time.Format&quot;&gt;Layout string in time&lt;&#x2F;a&gt;.Parse and time.Format expects this date (reference date): 01&#x2F;02&#x2F;2006  &lt;code&gt;Jan 2 15:04:05 2006 MST&lt;&#x2F;code&gt; (Note the date should be this specific date and time for it to parse successfully). Following shows some example:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;time.Parse(&amp;quot;01&#x2F;02&#x2F;2006&amp;quot;, &amp;quot;10&#x2F;02&#x2F;2024&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;time.Parse(&amp;quot;02 of 01 2006&amp;quot;, &amp;quot;02 of 10 2024&amp;quot;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;sql&quot;&gt;Sql&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;For database sql, checkout &lt;a href=&quot;https:&#x2F;&#x2F;go.dev&#x2F;wiki&#x2F;SQLInterface&quot;&gt;this wiki&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;logging&quot;&gt;Logging&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;For serial logging, checkout &lt;a href=&quot;https:&#x2F;&#x2F;pkg.go.dev&#x2F;log&#x2F;slog&quot;&gt;slog&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;golang-build&quot;&gt;Golang build&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;To cross compile go binary for different os and arch run:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;env GOOS=target-OS GOARCH=target-architecture go build package-import-path
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;where target-os can be: &lt;code&gt;linux, darwin, android, windows, freebsd, netbsd, openbsd, dragonfly, plan9&lt;&#x2F;code&gt;&lt;br &#x2F;&gt;
+where target-architecture can be: &lt;code&gt;arm, arm64, amd64&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;embed&lt;&#x2F;code&gt; package to add files to binary at compile time&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;local-dependency&quot;&gt;Local dependency&lt;&#x2F;h3&gt;
+&lt;p&gt;To use local version of the dependency, you can clone the deps in dir $DEP, then use replace directive in go mod&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;$ go mod edit -replace github.com&#x2F;google&#x2F;go-cmp=$DEP&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;array-slices&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;go.dev&#x2F;blog&#x2F;slices&quot;&gt;Array, Slices&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Array is the building block of contingous items, contains size as part of it&#x27;s definition. eg &lt;code&gt;var buffer [256]byte&lt;&#x2F;code&gt;. Arrays are always fixed size.&lt;&#x2F;li&gt;
+&lt;li&gt;Slice is a datastructure which describes a contiguous section of array: &lt;code&gt;var slice []byte = buffer[100:150]&lt;&#x2F;code&gt;. Behind the scenes, it contains the pointer to array, length and capacity (maximum length to which slice can extend).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;string-rune-character-byte&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;go.dev&#x2F;blog&#x2F;strings&quot;&gt;String, Rune, Character, Byte&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;String in golang is slice of bytes&lt;&#x2F;li&gt;
+&lt;li&gt;String literals are always utf-8 encoded. (Go source code) eg &lt;code&gt;const nihongo = &quot;日本語&quot;&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;In unicode standard, each character is represented by &quot;code point&quot; eg, U+2318 represents &lt;code&gt;⌘&lt;&#x2F;code&gt; , in golang this code point is referred as rune (aliased to int32)&lt;&#x2F;li&gt;
+&lt;li&gt;When you range through a loop, it decodes 1 utf-8 length rune on each loop&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;import-local-modules&quot;&gt;Import local modules&lt;&#x2F;h3&gt;
+&lt;p&gt;Import other packages rather than main package&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;import (
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  &amp;quot;noc-manager&#x2F;pkg&#x2F;models&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Run &lt;code&gt;go mod edit -replace noc-manager=..&#x2F;..&#x2F;noc-manager&lt;&#x2F;code&gt; to add a local dependency &amp;amp; run &lt;code&gt;go mod tidy&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Tip: Name modules as simple names rather than git urls unless you&#x27;re planning on publishing them. Otherwise you might get weird issues.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;json-or-yaml-omitempty-or-ignore&quot;&gt;JSON or YAML omitempty or ignore&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;type T struct {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    F int `yaml:&amp;quot;a,omitempty&amp;quot;`
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    B int `yaml:&amp;quot;-&amp;quot;` &#x2F;&#x2F; this field will be ignored from rendering
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;type T struct {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    F int `json:&amp;quot;a,omitempty&amp;quot;`
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    B int `json:&amp;quot;-&amp;quot;` &#x2F;&#x2F; this field will be ignored from rendering
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Microservices secret management</title>
+        <published>2018-10-07T13:10:00+00:00</published>
+        <updated>2025-09-24T11:30:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/posts/microservices-secret-management/"/>
+        <id>https://ms-choudhary.github.io/posts/microservices-secret-management/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/posts/microservices-secret-management/">&lt;blockquote&gt;
+&lt;p&gt;Your configuration management strategy will determine how you manage all of
+the changes that happen within your project. It thus records the evolution of
+your systems and applications. It will also govern how your team
+collaborates—a vital but sometimes overlooked consequence of any configuration
+management strategy.&lt;&#x2F;p&gt;
+&lt;p&gt;-- Continuous Delivery: Reliable Software Releases through Build, Test, and
+Deployment Automation&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Configuration management is one of the critical component of any deployment.
+Effective config management can greatly simplify your deployments. Ideally code
+should be configurable enough that it doesn&#x27;t hardcode any configuration
+(Although this is hard to get it right the first time, eventually you&#x27;ll figure
+out what should be configurable). Configuration, on the other hand, can be plug
+and played for different type of deployment. For example, in case of rails app,
+staging apps will need to read&#x2F;write from staging database, and production apps
+from production. &lt;a href=&quot;https:&#x2F;&#x2F;12factor.net&#x2F;config&quot;&gt;12 factor app&lt;&#x2F;a&gt; recommends that
+app reads configuration from environment variables, as they are both language
+and platform agnostic.&lt;&#x2F;p&gt;
+&lt;p&gt;Here are some ideal features any configuration management system should strive
+for:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;centralized, you use same mechanism to read secrets in pipeline jobs, in
+staging env or in production env, pretty much everywhere you need them
+(However, it can be good idea to separate production &amp;amp; staging configuration).&lt;&#x2F;li&gt;
+&lt;li&gt;rollbackable, you should be able to revert a config change back, ideally you
+shouldn&#x27;t lose any info, doesn&#x27;t matter what you change.&lt;&#x2F;li&gt;
+&lt;li&gt;encrypted, you should never store secrets in plain text. You should rotate the
+key frequently.&lt;&#x2F;li&gt;
+&lt;li&gt;auditing, you should be able to tell who changed what and when, when things go
+south&lt;&#x2F;li&gt;
+&lt;li&gt;principle of least privilege, service A shouldn&#x27;t be able to read secrets of
+service B, likewise developer of service A should only have read write access
+to secrets of service A.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;aws-parameter-store&quot;&gt;AWS Parameter Store&lt;&#x2F;h1&gt;
+&lt;p&gt;AWS Parameter Store is a simple service which stores strings either as plain
+text or encrypted. It has all good features of a centralized config management
+system. For example,&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;you can encrypt the values using custom KMS keys.&lt;&#x2F;li&gt;
+&lt;li&gt;you can track the changes made overtime.&lt;&#x2F;li&gt;
+&lt;li&gt;you can have fine grain control of who has what access (read or write) based
+on IAM policies.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;And since it&#x27;s AWS managed, you don&#x27;t have to worry about hassle of managing yet
+another service.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;chamber&quot;&gt;Chamber&lt;&#x2F;h1&gt;
+&lt;p&gt;That said, it&#x27;s not that user friendly to use, either via console or cli
+(Atleast was by the time of writing this post). Segmentio has built a cli tool
+around it, known as &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;segmentio&#x2F;chamber&quot;&gt;chamber&lt;&#x2F;a&gt;. The
+interface is really simple &amp;amp; powerful to use. For example, it can export all the
+secrets as environment variables before booting up application, which is nice.&lt;&#x2F;p&gt;
+&lt;p&gt;Chamber by default requires a custom KMS key (for encryption of values). It
+needs to be named spefically &lt;code&gt;parameter_store_key&lt;&#x2F;code&gt;. You can create it by running
+following terraform script (or equivalent steps in console or cli):&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;resource &amp;quot;aws_kms_key&amp;quot; &amp;quot;parameter_store&amp;quot; {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  description             = &amp;quot;Parameter store kms master key&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  deletion_window_in_days = 10
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  enable_key_rotation     = true
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;resource &amp;quot;aws_kms_alias&amp;quot; &amp;quot;parameter_store_alias&amp;quot; {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  name          = &amp;quot;alias&#x2F;parameter_store_key&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  target_key_id = &amp;quot;${aws_kms_key.parameter_store.id}&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Chamber segregates configuration based on services. For example, you can create
+following services:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# for brevity, this shows just one key, you can write multiple key values for
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;each service by repeating the writes
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# microservice a, contains only application config
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber write my_app_a app myapp-a
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# microservice b
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber write my_app_b app myapp-b
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# ci database, contains database connection config
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber write mysql_db_ci host ci_host
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# stag database
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber write mysql_db_staging host stag_host
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Each of your centralized datastores (RDS, ES, redis) can be separate services.
+Now, you can, run following:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# to boot app with ci-db in CI pipelines
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber exec my_app_a mysql_db_ci -- bundle exec rails test
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# to boot app in staging
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;chamber exec my_app_b mysql_db_staging -- bundle exec rails server
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You can plug &lt;code&gt;mysql_db_ci&lt;&#x2F;code&gt; or &lt;code&gt;mysql_db_staging&lt;&#x2F;code&gt; as needed. If you use docker,
+you can add this in Dockerfile:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;CMD [&amp;quot;chamber&amp;quot;, &amp;quot;exec&amp;quot;, &amp;quot;my_app_a&amp;quot;, &amp;quot;mysql_db_ci&amp;quot;, &amp;quot;--&amp;quot;, &amp;quot;bundle exec rails s&amp;quot;]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;When you specify multiple services, chamber fetches keys of all services in
+order, merges them (later service key&#x27;s value overriding former in case of
+conflict). Finally it&#x27;s boots the application as it&#x27;s sub process with all env&#x27;s
+set. It also acts like a dumb init, and passes all signals to application
+process.&lt;&#x2F;p&gt;
+&lt;p&gt;IAM policies can be used to ensure principle of least priviledges. There are
+many ways to attach IAM role to your application container. If you&#x27;re running
+kubernetes, checkout &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jtblin&#x2F;kube2iam&quot;&gt;kube2iam&lt;&#x2F;a&gt; project. Or
+you can use &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aws&#x2F;amazon-ecs-agent&quot;&gt;EC2 Container Service
+Agent&lt;&#x2F;a&gt; (ecs-agent).&lt;&#x2F;p&gt;
+&lt;p&gt;Following policy ensures that container is only able to read secrets for service
+&lt;code&gt;{{ service_name }}&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    &amp;quot;Sid&amp;quot;: &amp;quot;&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    &amp;quot;Action&amp;quot;: [
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;        &amp;quot;ssm:GetParameters&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;        &amp;quot;ssm:GetParametersByPath&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    ],
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    &amp;quot;Resource&amp;quot;: &amp;quot;arn:aws:ssm:*:*:parameter&#x2F;&amp;lt;&amp;lt; service_name &amp;gt;&amp;gt;&#x2F;*&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;},
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;mozilla-sops&quot;&gt;Mozilla Sops&lt;&#x2F;h1&gt;
+&lt;p&gt;This system is good by itself. However, overtime, we noticed that managing keys
+(adding or updating) via chamber was not that user friendly.&lt;&#x2F;p&gt;
+&lt;p&gt;Chamber supports export &amp;amp; import of keys from json file. So instead of
+reading&#x2F;writing single keys, we created a json file per service and stored them
+in a common repository:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;├── production
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│   ├── .sops.yaml
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│   ├── grafana
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│   │   ├── grafana_app.json
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│   └── metabase
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│       └── metabase_app.json
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;└── staging
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    ├── .sops.yaml
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    ├── sentry
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    │   └── sentry_app.json
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    └── gitlab
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;        └── gitlab_app.json
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The data is encrypted using &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mozilla&#x2F;sops&quot;&gt;Mozilla Sops&lt;&#x2F;a&gt;
+(which is really cool, you can use your favourite editor, also it encrypts only
+the values, so that git diffs are meaningful). Sops supports many types of
+encryption, we use AWS KMS, because it&#x27;s simpler to manage.&lt;&#x2F;p&gt;
+&lt;p&gt;If you add following config in root dir, sops can use that KMS key by default
+for all new files (in this case we use single KMS key for all staging services):&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;$ cat staging&#x2F;.sops.yaml
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;creation_rules:
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  - path_regex: \.json$
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    kms: &amp;#39;&amp;lt;&amp;lt; arn_of_kms_key &amp;gt;&amp;gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You&#x27;ll have to create KMS key in AWS (see above on how to do that, also checkout
+readme of sops).&lt;&#x2F;p&gt;
+&lt;p&gt;Now you can create new service as&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;sops staging&#x2F;gitlab&#x2F;gitlab_app.json
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This will open editor, you can update the key &amp;amp; values here. If you open this
+file via normal editor, you can see that all values are encrypted.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    &amp;quot;access_token&amp;quot;:
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&amp;quot;ENC[AES256_GCM,data:C+daldrNWpQhDUolPjhM9yyAERuxylfycA56wOoe5Vs=,iv:5Lss6SqmE23fQ3YA7T97V+v0mXd&#x2F;cDNgM3FS24x&#x2F;JdE=,tag:tbP2quqao4I4D54HZhyFlw==,type:str]&amp;quot;,
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Finally following script syncs these keys to parameter store using chamber on
+each commit via pipeline job:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;#! &#x2F;bin&#x2F;bash
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;set -o errexit
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;ACCOUNT=$1
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;if [[ ! &amp;quot;$ACCOUNT&amp;quot; =~ (production|staging) ]]; then
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  echo &amp;quot;error: param-sync: invalid account. Usage: $0 production|staging&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  exit 1
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;fi
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;synced() {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  git tag &amp;quot;$ACCOUNT-synced&amp;quot; -f
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  git push origin &amp;quot;$ACCOUNT-synced&amp;quot; -f
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;services_changed() {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  git diff --name-status &amp;quot;$ACCOUNT-synced..master&amp;quot; | cut -f2 | grep &amp;quot;$ACCOUNT&amp;quot; |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;grep &amp;#39;.json$&amp;#39;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;NO_SERVICES_CHANGED=$(services_changed | wc -l)
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;echo &amp;quot;$NO_SERVICES_CHANGED services changed:&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;services_changed || true
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;if [[ &amp;quot;$NO_SERVICES_CHANGED&amp;quot; == &amp;quot;0&amp;quot; ]]; then
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  echo &amp;quot;Skipping sync...&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;else
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  for SERVICE_FILE in $(services_changed); do
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    SERVICE=&amp;quot;$(basename &amp;quot;$SERVICE_FILE&amp;quot; | cut -f 1 -d &amp;#39;.&amp;#39;)&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    echo &amp;quot;$SERVICE:&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    sops -d &amp;quot;$SERVICE_FILE&amp;quot; | chamber import &amp;quot;$SERVICE&amp;quot; -
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  done
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;fi
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;echo &amp;quot;All changes synced. Tag current commit in git&amp;quot;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;synced
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;references&quot;&gt;References&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;segment.com&#x2F;blog&#x2F;the-right-way-to-manage-secrets&#x2F;&quot;&gt;The right way to manage secrets with
+AWS&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Interfaces in Go</title>
+        <published>2018-06-02T13:10:00+00:00</published>
+        <updated>2025-09-24T11:29:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ms-choudhary.github.io/posts/interfaces-in-go/"/>
+        <id>https://ms-choudhary.github.io/posts/interfaces-in-go/</id>
+        
+        <content type="html" xml:base="https://ms-choudhary.github.io/posts/interfaces-in-go/">&lt;p&gt;Go is a strongly typed language, which doesn&#x27;t support generics. Although not your common object oriented language like java, go does support types and methods on those types. There are no constructors, inheritance. The whole idea is to intentionally keep it light weight. Interface is something similar to what you&#x27;ve in other languages. This is how you define them:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;package io
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;type Writer interface {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    Write(p []byte) (n int, err error)
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Interfaces are contracts:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is another kind of type in Go called an interface type. An interface is an abstract type. It doesn’t expose the representation or internal structure of its values, or the set of basic operations they support; it reveals only some of their methods. When you have a value of an interface type, you know nothing about what it is; you know only what it can do, or more precisely, what behaviors are provided by its methods.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;As is expected, if a function expects &lt;code&gt;io.Writer&lt;&#x2F;code&gt; as argument. We can pass any of the concrete type which implements &lt;code&gt;io.Writer&lt;&#x2F;code&gt; to it. And based on the actual type, same function can either write to &lt;code&gt;os.Stdout&lt;&#x2F;code&gt; or a file or a string buffer. Thus, exhibiting polymorphism.&lt;&#x2F;p&gt;
+&lt;p&gt;So how do concrete types implement a particular interface. Well it need not to. Go interfaces are implicitly satisfied if a particular concrete type implements the methods of the interface (For example, if &lt;code&gt;os.File&lt;&#x2F;code&gt; implements a &lt;code&gt;Write&lt;&#x2F;code&gt; method with signature similar to above, it satisfies that interface). This way you can define a new interface and existing types will still satisfy it, if they support all methods. This is particularly usefully if you don&#x27;t own those types.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;internals&quot;&gt;Internals&lt;&#x2F;h1&gt;
+&lt;p&gt;Interface internally consists of two values: dynamic type and dynamic value. Like other types, interfaces are initialized, by default, to well defined value, where both &lt;em&gt;type&lt;&#x2F;em&gt; and &lt;em&gt;value&lt;&#x2F;em&gt; are &lt;code&gt;nil&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;var w io.Writer
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;i.ibb.co&#x2F;Nn8jnnb&#x2F;f7JtK8G.png&quot; alt=&quot;Full-width image&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;An interface is &lt;code&gt;nil&lt;&#x2F;code&gt; when it&#x27;s &lt;em&gt;type&lt;&#x2F;em&gt; value is &lt;code&gt;nil&lt;&#x2F;code&gt;. Just like pointers &amp;amp; other aggregate types, interfaces can be compared to &lt;code&gt;nil&lt;&#x2F;code&gt; (i.e., &lt;code&gt;w == nil&lt;&#x2F;code&gt; or &lt;code&gt;w != nil&lt;&#x2F;code&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;Interfaces can only be assigned to types which support all methods defined by the interface.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;var w io.Writer
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&#x2F;&#x2F; os.Stdout is *os.File pointing to standard output
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;w = os.Stdout
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;On assignment, &lt;em&gt;type&lt;&#x2F;em&gt; of interface value get set to the actual concrete type &amp;amp; &lt;em&gt;value&lt;&#x2F;em&gt; to it&#x27;s actual value.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;i.ibb.co&#x2F;drgKgbv&#x2F;O8uK3cF.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;When we execute a method on interface,&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;w.Write([]byte(&amp;quot;hello&amp;quot;))
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;compiler infers the address of the method from the actual concrete type and calls it with &lt;em&gt;value&lt;&#x2F;em&gt; as receiver. So &lt;code&gt;w.Write&lt;&#x2F;code&gt; internally executes &lt;code&gt;(*os.File).Write&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;equality&quot;&gt;Equality&lt;&#x2F;h1&gt;
+&lt;p&gt;Interface can be compared for equality using &lt;code&gt;==&lt;&#x2F;code&gt; &amp;amp; &lt;code&gt;!=&lt;&#x2F;code&gt;. Two interfaces are equal if both their &lt;em&gt;type&lt;&#x2F;em&gt; and &lt;em&gt;value&lt;&#x2F;em&gt; are equal.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
