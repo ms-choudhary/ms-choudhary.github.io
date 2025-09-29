@@ -1,7 +1,7 @@
 ---
 title: Files/Storage
 date: 2024-11-23 09:47:48Z
-updated: 2024-11-23 09:48:05Z
+updated: 2025-09-28 11:58:28Z
 taxonomies:
   tags:
   - linux
@@ -10,6 +10,7 @@ taxonomies:
 ### Useful commands
 - Use `tac` or `tail -r` to reverse a file
 - `cat -n filename` show file with linenumber
+- `less -N filename or type -N in less window` show line numbers with less
 
 ### Copy via dd
 

@@ -1,7 +1,7 @@
 ---
 title: Terminal/Shell
 date: 2024-09-24 09:47:30Z
-updated: 2025-04-03 06:53:23Z
+updated: 2025-09-28 11:57:39Z
 taxonomies:
   tags:
   - linux
@@ -45,10 +45,3 @@ tputs cols # for columns
 ```
 
 when you change the window size of the terminal, kernel sends a signal `SIGWINCH` which resets the stty cols etc. The side effect of this not being correctly set will result in overwriting of text of same line and not changing to next line on inputting long text in the terminal. 
-
-### Line numbers with less
-
-```
-less -N filename
-or type -N in less window
-```
