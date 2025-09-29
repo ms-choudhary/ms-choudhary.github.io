@@ -1,7 +1,7 @@
 ---
-title: Security
+title: Certificates
 date: 2024-11-23 09:43:29Z
-updated: 2025-09-07 13:11:10Z
+updated: 2025-09-29 17:31:16Z
 taxonomies:
   tags:
   - security
