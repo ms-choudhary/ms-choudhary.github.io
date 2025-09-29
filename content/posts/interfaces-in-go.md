@@ -1,7 +1,7 @@
 ---
 title: Interfaces in Go
-date: 2025-09-01 13:10:09Z
-updated: 2025-09-24 11:29:59Z
+date: 2018-06-02 13:10:00Z
+updated: 2025-09-24 11:29:00Z
 taxonomies:
   tags:
   - golang

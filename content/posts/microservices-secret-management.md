@@ -1,7 +1,7 @@
 ---
 title: Microservices secret management
-date: 2025-09-01 13:10:37Z
-updated: 2025-09-24 11:30:03Z
+date: 2018-10-07 13:10:00Z
+updated: 2025-09-24 11:30:00Z
 taxonomies:
   tags:
   - aws
