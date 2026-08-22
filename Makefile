@@ -12,4 +12,4 @@ build-notes: clean
 	python3 scripts/build_notes.py $(META)
 
 serve: build-notes
-	zola serve
+	zola serve -p 8000
