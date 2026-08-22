@@ -4,10 +4,15 @@ Usage: python3 scripts/build_notes.py <meta.json>
 
 Copy each til note to content/<path>, replacing its '# Title' heading with Zola frontmatter,
 and give every category dir a transparent section index so its notes list under /notes.
+
+Cross-note links are turned into Zola internal links, which Zola resolves and validates:
+    /notes/git/oh-shit-git.md  ->  @/notes/git/oh-shit-git.md
 """
 import json
+import re
 import sys
 from pathlib import Path
+from urllib.parse import unquote
 
 SITE_ROOT = Path(__file__).resolve().parent.parent
 TIL_DIR = SITE_ROOT / "til"
@@ -36,6 +41,21 @@ def drop_title_heading(body: str) -> str:
     return rest.lstrip("\n") if first_line.startswith("# ") else body
 
 
+def anchor_slug(text: str) -> str:
+    """The notes writes anchors as prose; Zola's heading ids are slugified."""
+    return re.sub(r"[^a-z0-9]+", "-", unquote(text).lower()).strip("-")
+
+
+def link_to_internal(body: str) -> str:
+    def to_internal(match: re.Match[str]) -> str:
+        path, anchor = match.group(1), match.group(2)
+        return f"](@{path}#{anchor_slug(anchor)}" if anchor else f"](@{path}"
+
+    # an anchor may contain balanced parens, as in #KASLR%20(Kernel%20Address%20Space...)
+    fragment = r"(?:[^()\s]|\([^()\s]*\))*"
+    return re.sub(rf"\]\((/notes/[^)\s#]+\.md)(?:#({fragment}))?", to_internal, body)
+
+
 def main() -> None:
     notes: list[dict[str, str]] = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
 
@@ -47,8 +67,9 @@ def main() -> None:
 
     for note in notes:
         body = (TIL_DIR / note["path"]).read_text(encoding="utf-8")
+        body = link_to_internal(drop_title_heading(body))
         target = CONTENT_DIR / note["path"]
-        target.write_text(frontmatter(note) + drop_title_heading(body), encoding="utf-8")
+        target.write_text(frontmatter(note) + body, encoding="utf-8")
 
     print(f"generated {len(notes)} notes")
 

@@ -2,5 +2,5 @@ public/
 
 # generated at build time from the til/ submodule — see scripts/build_notes.py
 /content/notes/*/
-/static/images/
+/static/_images/
 /meta.json
