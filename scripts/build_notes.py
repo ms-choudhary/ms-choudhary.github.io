@@ -2,7 +2,8 @@
 """
 Usage: python3 scripts/build_notes.py <meta.json>
 
-Copy each til note to content/<path>, replacing its '# Title' heading with Zola frontmatter.
+Copy each til note to content/<path>, replacing its '# Title' heading with Zola frontmatter,
+and give every category dir a transparent section index so its notes list under /notes.
 """
 import json
 import sys
@@ -25,6 +26,11 @@ def frontmatter(note: dict[str, str]) -> str:
     )
 
 
+def section_frontmatter(category: str) -> str:
+    # transparent hands the category's notes up to /notes, so they all list at the top level
+    return f'+++\ntitle = "{category}"\ntransparent = true\nsort_by = "date"\n+++\n'
+
+
 def drop_title_heading(body: str) -> str:
     first_line, _, rest = body.lstrip().partition("\n")
     return rest.lstrip("\n") if first_line.startswith("# ") else body
@@ -32,11 +38,18 @@ def drop_title_heading(body: str) -> str:
 
 def main() -> None:
     notes: list[dict[str, str]] = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+
+    for category_dir in sorted({Path(note["path"]).parent for note in notes}):
+        (CONTENT_DIR / category_dir).mkdir(parents=True, exist_ok=True)
+        (CONTENT_DIR / category_dir / "_index.md").write_text(
+            section_frontmatter(category_dir.name), encoding="utf-8"
+        )
+
     for note in notes:
         body = (TIL_DIR / note["path"]).read_text(encoding="utf-8")
         target = CONTENT_DIR / note["path"]
-        target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(frontmatter(note) + drop_title_heading(body), encoding="utf-8")
+
     print(f"generated {len(notes)} notes")
 
 
