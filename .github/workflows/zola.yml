@@ -23,6 +23,11 @@ jobs:
       - name: Generate notes from til
         run: make build-notes
 
+      - name: Fetch project metadata from GitHub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: make projects
+
       - name: Build and deploy
         uses: shalzz/zola-deploy-action@v0.21.0
         env:

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% import "macros/macros.html" as post_macros %}
+{% import "macros/components.html" as components %}
+
+{% block main_content %}
+    {{ post_macros::page_header(title=section.title) }}
+
+    {% if section.content %}
+        <div class="section-content">
+            {{ section.content | safe }}
+        </div>
+    {% endif %}
+
+    {% set data = load_data(path="content/projects/data.toml") %}
+    {% set columns = section.extra.cards_columns | default(value=2) %}
+
+    <main>
+        <div class="cards" style="--columns: {{ columns }};">
+            {%- for project in data.project %}
+                {% set_global homepage = "" %}
+                {% set_global repo = "" %}
+                {%- for link in project.links -%}
+                    {% if link.name == "Homepage" %}{% set_global homepage = link.url %}{% endif %}
+                    {% if link.name == "GitHub" %}{% set_global repo = link.url %}{% endif %}
+                {%- endfor %}
+
+                <div class="card">
+                    <div class="card-content">
+                        <h1 class="card-title">
+                            <a href="{{ repo }}">{{ project.name }}</a>
+                        </h1>
+
+                        {% if project.description %}
+                            <p class="card-tagline">{{ project.description }}</p>
+                        {% endif %}
+
+                        <div class="card-footer">
+                            <div class="card-links">
+                                {% if repo %}
+                                    {{ components::icon_button(href=repo, text="GitHub", icon="github") }}
+                                {% endif %}
+                                {% if homepage %}
+                                    {{ components::icon_button(href=homepage, text="Homepage", icon="globe") }}
+                                {% endif %}
+                            </div>
+
+                            <div class="card-tags">
+                                {% if project.language %}
+                                    <span class="card-tag">#{{ project.language }}</span>
+                                {% endif %}
+                                {% if project.stars %}
+                                    <span class="card-tag">★ {{ project.stars }}</span>
+                                {% endif %}
+                                {% if project.pushed %}
+                                    <span class="card-tag">{{ project.pushed }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {%- endfor %}
+        </div>
+    </main>
+{% endblock main_content %}

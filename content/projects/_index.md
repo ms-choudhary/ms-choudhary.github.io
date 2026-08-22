@@ -1,7 +1,7 @@
 +++
 title = "Projects"
 sort_by = "weight"
-template = "cards.html"
+template = "projects.html"
 in_search_index = false
 generate_feeds = false
 +++
