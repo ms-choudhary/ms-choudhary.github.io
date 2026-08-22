@@ -1,9 +1,11 @@
 name: Zola on GitHub Pages
 
-on: 
- push:
-  branches:
-   - master
+on:
+  push:
+    branches:
+      - master
+  repository_dispatch:
+    types: [til-updated]
 
 jobs:
   build:
@@ -11,13 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout main
-      uses: actions/checkout@v4
-      with:
-        lfs: true
-        submodules: "recursive"
+      - name: Checkout site
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          submodules: "recursive"
+          fetch-depth: 0
 
-    - name: Build and deploy
-      uses: shalzz/zola-deploy-action@v0.21.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate notes from til
+        run: make build-notes
+
+      - name: Build and deploy
+        uses: shalzz/zola-deploy-action@v0.21.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
