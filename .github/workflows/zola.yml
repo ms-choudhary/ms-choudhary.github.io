@@ -23,9 +23,12 @@ jobs:
       - name: Generate notes from til
         run: make build-notes
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
       - name: Fetch project metadata from GitHub
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: make projects
 
       - name: Build and deploy
