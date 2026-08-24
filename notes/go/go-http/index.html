@@ -1,0 +1,68 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                Go HTTP
+            
+        </title><meta content="Go HTTP" property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg style=filter:invert()> <img alt=Auto id=auto-icon src=https://ms-choudhary.github.io/icons/auto.svg style=filter:invert()> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>Go HTTP</div><div class=meta>Posted on <time>2026-08-19</time> :: Updated on <time>2026-08-22</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/go/>go</a> </span></div></div><section class=body><h2 id=mux>Mux</h2><pre class=z-code><code><span class="z-text z-plain">func main() {
+</span><span class="z-text z-plain">    mux := http.NewServeMux()
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">    mux.HandleFunc("GET /posts",          listPosts)
+</span><span class="z-text z-plain">    mux.HandleFunc("POST /posts",         createPost)
+</span><span class="z-text z-plain">    mux.HandleFunc("GET /posts/{id}",     getPost)
+</span><span class="z-text z-plain">    mux.HandleFunc("PUT /posts/{id}",     updatePost)
+</span><span class="z-text z-plain">    mux.HandleFunc("DELETE /posts/{id}",  deletePost)
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">    http.ListenAndServe(":8080", mux)
+</span><span class="z-text z-plain">}
+</span></code></pre><h3 id=path-values>Path values</h3><pre class=z-code><code><span class="z-text z-plain">mux.HandleFunc("GET /users/{id}", func(w http.ResponseWriter, r *http.Request) {
+</span><span class="z-text z-plain">    id := r.PathValue("id")  // new in 1.22
+</span><span class="z-text z-plain">    fmt.Fprintf(w, "User ID: %s", id)
+</span><span class="z-text z-plain">})
+</span></code></pre><h2 id=http-middleware>HTTP Middleware</h2><h3 id=pattern>Pattern</h3><pre class=z-code><code><span class="z-text z-plain">func exampleMiddleware(next http.Handler) http.Handler {
+</span><span class="z-text z-plain">	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+</span><span class="z-text z-plain">		// Your middleware logic goes here...
+</span><span class="z-text z-plain">		next.ServeHTTP(w, r)
+</span><span class="z-text z-plain">	})
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">func fooHandler(w http.ResponseWriter, r *http.Request) {
+</span><span class="z-text z-plain">	w.Write([]byte("foo"))
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">func main() {
+</span><span class="z-text z-plain">	mux := http.NewServeMux()
+</span><span class="z-text z-plain">	mux.Handle("/foo", exampleMiddleware(http.HandleFunc(fooHandler)))
+</span><span class="z-text z-plain">	
+</span><span class="z-text z-plain">	log.Fatal(http.ListenAndServe(":3000", mux))
+</span><span class="z-text z-plain">}
+</span></code></pre><p>To add middleware for all routes, add it on http.ServeMux() (since it implements http.Handler interface).<pre class=z-code><code><span class="z-text z-plain">log.Fatal(http.ListenAndServe(":3000", myMiddleware(mux)))
+</span></code></pre><h3 id=chain>Chain</h3><pre class=z-code><code><span class="z-text z-plain">type chain []func(http.Handler) http.Handler
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">func (c chain) thenFunc(h http.HandlerFunc) http.Handler {
+</span><span class="z-text z-plain">    return c.then(h)
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">func (c chain) then(h http.Handler) http.Handler {
+</span><span class="z-text z-plain">    for _, mw := range slices.Backward(c) {
+</span><span class="z-text z-plain">        h = mw(h)
+</span><span class="z-text z-plain">    }
+</span><span class="z-text z-plain">    return h
+</span><span class="z-text z-plain">}
+</span></code></pre><p>Usage:<pre class=z-code><code><span class="z-text z-plain">mux := http.NewServeMux()
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// Create a base middleware chain. 
+</span><span class="z-text z-plain">baseChain := chain{requestID, logRequest}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// Extend the base chain with auth middleware for admin-only routes.
+</span><span class="z-text z-plain">adminChain := append(baseChain, authenticateUser, requireAdminUser)
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">mux.Handle("GET /static/", spaHandler(http.FileServerFS(ui.Files)))
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">mux.Handle("GET /", baseChain.thenFunc(home))
+</span><span class="z-text z-plain">mux.Handle("GET /article/{id}", baseChain.thenFunc(showArticle))
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">mux.Handle("GET /admin", adminChain.thenFunc(showAdminDashboard))
+</span></code></pre><h3 id=use-cases>Use cases</h3><ul><li>Check if user is authenticated<li>Check for headers like <code>Content-Type</code><li>Implement rate limit logic<li>Add http headers in response<li>Log request & response automatically using <code>log/slog</code></ul><h2 id=sources>Sources</h2><ul><li>https://www.alexedwards.net/blog/making-and-using-middleware<li>https://www.alexedwards.net/blog/organize-your-go-middleware-without-dependencies</ul><h2 id=related>Related</h2><ul><li><a href=https://ms-choudhary.github.io/notes/go/handling-spa-go/>handling-spa-go</a></ul></section></article></main></div></div><div class=right-content></div>

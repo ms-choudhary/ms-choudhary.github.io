@@ -1,0 +1,259 @@
+# GitHub Projects
+# Generated on 2026-08-24 07:19:53
+# Total projects: 26
+
+[[project]]
+name = "ms-choudhary.github.io"
+description = "Personal blog."
+created = "Jul 2019"
+pushed = "Aug 2026"
+language = "CSS"
+links = [
+  { name = "Homepage", url = "https://ms-choudhary.github.io/" },
+  { name = "GitHub", url = "https://github.com/ms-choudhary/ms-choudhary.github.io" },
+]
+
+[[project]]
+name = "gullak"
+description = "A no-frills expense tracker app enabling quick logging of expenses in natural language, using LLMs for parsing and categorization."
+created = "Oct 2025"
+pushed = "Aug 2026"
+language = "Vue"
+links = [
+  { name = "Homepage", url = "https://mrkaran.dev/posts/gullak/" },
+  { name = "GitHub", url = "https://github.com/ms-choudhary/gullak" },
+]
+
+[[project]]
+name = "portfolio-scan"
+description = "Track and rebalance allocation across different asset classes (equity, debt, gold)"
+created = "Oct 2025"
+pushed = "Jul 2026"
+language = "Vue"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/portfolio-scan" },
+]
+
+[[project]]
+name = "deadmanssnitch"
+description = "Go implementation of Deadman's Snitch service"
+created = "Oct 2021"
+pushed = "Feb 2026"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/deadmanssnitch" },
+]
+
+[[project]]
+name = "kubewatch"
+description = "Simple kubernetes controller for monitoring pod status in slack "
+created = "Jan 2026"
+pushed = "Jan 2026"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/kubewatch" },
+]
+
+[[project]]
+name = "convert-joplin-zola"
+description = "Convert notes from Joplin to serve static website via Zola"
+created = "Sep 2025"
+pushed = "Sep 2025"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/convert-joplin-zola" },
+]
+
+[[project]]
+name = "cachr"
+description = "Remote Caching for CI/CD"
+created = "Mar 2019"
+pushed = "Apr 2023"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/cachr" },
+]
+
+[[project]]
+name = "sops"
+description = "Custom helm downloader plugin for Mozilla sops"
+created = "Dec 2021"
+pushed = "Dec 2021"
+language = "Shell"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/sops" },
+]
+
+[[project]]
+name = "quotes"
+description = "Quotes as a service"
+created = "May 2021"
+pushed = "Nov 2021"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/quotes" },
+]
+
+[[project]]
+name = "update-kubeconfig"
+description = "Read oc login command & update kubeconfig"
+created = "Aug 2021"
+pushed = "Aug 2021"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/update-kubeconfig" },
+]
+
+[[project]]
+name = "webservice"
+description = "Simple HTTP service for testing"
+created = "May 2021"
+pushed = "May 2021"
+language = "Dockerfile"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/webservice" },
+]
+
+[[project]]
+name = "gopl-exercises"
+description = "Go Programming Language Book Exercises"
+created = "Sep 2019"
+pushed = "Apr 2021"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/gopl-exercises" },
+]
+
+[[project]]
+name = "gitlab-cli"
+description = "Command Line Client for interacting with Gitlab API's"
+created = "Feb 2021"
+pushed = "Feb 2021"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/gitlab-cli" },
+]
+
+[[project]]
+name = "whisper"
+description = "A temporary scratch pad for sharing throwaway secrets"
+created = "Oct 2019"
+pushed = "Jan 2021"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/whisper" },
+]
+
+[[project]]
+name = "kubernetes-vagrant"
+description = "kubernetes on vagrant"
+created = "Jan 2021"
+pushed = "Jan 2021"
+language = "Shell"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/kubernetes-vagrant" },
+]
+
+[[project]]
+name = "natgeo-firefox-extension"
+description = "National Geographic photo of the day firefox extension"
+created = "Oct 2020"
+pushed = "Oct 2020"
+language = "JavaScript"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/natgeo-firefox-extension" },
+]
+
+[[project]]
+name = "pocket"
+description = "Pocket Cli"
+created = "Oct 2020"
+pushed = "Oct 2020"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/pocket" },
+]
+
+[[project]]
+name = "hacks"
+description = "Random bits of fun stuff"
+created = "Mar 2020"
+pushed = "Mar 2020"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/hacks" },
+]
+
+[[project]]
+name = "east-to-west"
+description = "A tool to convert between Indian music notation and Western notation"
+created = "Dec 2019"
+pushed = "Dec 2019"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/east-to-west" },
+]
+
+[[project]]
+name = "xkcd"
+description = "A simple command line tool for searching and fetching xkcd comics"
+created = "Oct 2019"
+pushed = "Oct 2019"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/xkcd" },
+]
+
+[[project]]
+name = "slackup"
+description = "A backup of slack channels"
+created = "Oct 2019"
+pushed = "Oct 2019"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/slackup" },
+]
+
+[[project]]
+name = "rosetta"
+description = "Programming Challenges"
+created = "Sep 2019"
+pushed = "Oct 2019"
+language = "Go"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/rosetta" },
+]
+
+[[project]]
+name = "ideas"
+description = "List of interesting project ideas"
+created = "Sep 2019"
+pushed = "Sep 2019"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/ideas" },
+]
+
+[[project]]
+name = "env-settings"
+description = "Personal settings for new linux systems"
+created = "Dec 2016"
+pushed = "Dec 2016"
+language = "Shell"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/env-settings" },
+]
+
+[[project]]
+name = "datapurge"
+description = "Tool which helps in deletion of data in Java EE environment"
+created = "Feb 2016"
+pushed = "Feb 2016"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/datapurge" },
+]
+
+[[project]]
+name = "testprog"
+description = "A small script to automate few thing while creating programs."
+created = "Jun 2013"
+pushed = "Jun 2013"
+links = [
+  { name = "GitHub", url = "https://github.com/ms-choudhary/testprog" },
+]
+
