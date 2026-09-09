@@ -1,0 +1,67 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                DHCPD
+            
+        </title><meta content=DHCPD property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg style=filter:invert()> <img alt=Auto id=auto-icon src=https://ms-choudhary.github.io/icons/auto.svg style=filter:invert()> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>DHCPD</div><div class=meta>Posted on <time>2026-08-19</time> :: Updated on <time>2026-08-22</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/os-install/>os-install</a> </span></div></div><section class=body><p><strong>Source</strong>:<h3 id=leases>Leases</h3><ul><li>leases are stored at path: <code>/var/lib/dhcpd/dhcpd.leases</code></ul><h3 id=configuration>Configuration</h3><p>DHCPD (isc-dhcpd) sample configuration:<pre class=z-code><code><span class="z-text z-plain">ddns-update-style interim;
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">allow booting;
+</span><span class="z-text z-plain">allow bootp;
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">ignore client-updates;
+</span><span class="z-text z-plain">set vendorclass = option vendor-class-identifier;
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">option system-arch code 93 = unsigned integer 16;
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">subnet 10.203.32.64 netmask 255.255.255.192 {
+</span><span class="z-text z-plain">     option routers             10.203.32.126;
+</span><span class="z-text z-plain">     option domain-name-servers 10.199.1.240;
+</span><span class="z-text z-plain">     option subnet-mask         255.255.255.192;
+</span><span class="z-text z-plain">     range dynamic-bootp        10.203.32.65 10.203.32.100 ;
+</span><span class="z-text z-plain">     default-lease-time         1800;
+</span><span class="z-text z-plain">     max-lease-time             3600;
+</span><span class="z-text z-plain">     next-server                $next_server_v4;
+</span><span class="z-text z-plain">     class "pxeclients" {
+</span><span class="z-text z-plain">          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">          # Legacy
+</span><span class="z-text z-plain">          if option system-arch = 00:00 {
+</span><span class="z-text z-plain">              filename "grub/grub.0";
+</span><span class="z-text z-plain">          }
+</span><span class="z-text z-plain">          # UEFI-32-2
+</span><span class="z-text z-plain">          if option system-arch = 00:02 {
+</span><span class="z-text z-plain">              # Not supported, no 32 bit UEFI grub executable
+</span><span class="z-text z-plain">              filename "unsupported";
+</span><span class="z-text z-plain">          }
+</span><span class="z-text z-plain">          # UEFI-64-1
+</span><span class="z-text z-plain">          else if option system-arch = 00:07 {
+</span><span class="z-text z-plain">              filename "grub/grubx64.efi";
+</span><span class="z-text z-plain">          }
+</span><span class="z-text z-plain">          # UEFI-64-2
+</span><span class="z-text z-plain">          else if option system-arch = 00:08 {
+</span><span class="z-text z-plain">              filename "grub/grubx64.efi";
+</span><span class="z-text z-plain">          }
+</span><span class="z-text z-plain">          # UEFI-64-3
+</span><span class="z-text z-plain">          else if option system-arch = 00:09 {
+</span><span class="z-text z-plain">              filename "grub/grubx64.efi";
+</span><span class="z-text z-plain">          }
+</span><span class="z-text z-plain">          # armv7   (aka arm 32 bit)
+</span><span class="z-text z-plain">          else if option system-arch = 00:0a {
+</span><span class="z-text z-plain">              filename "grub/armv7.efi";
+</span><span class="z-text z-plain">          }
+</span><span class="z-text z-plain">          # aarch64 (aka arm 64 bit)
+</span><span class="z-text z-plain">          else if option system-arch = 00:0b {
+</span><span class="z-text z-plain">              filename "grub/grubaa64.efi";
+</span><span class="z-text z-plain">          }
+</span><span class="z-text z-plain">          else
+</span><span class="z-text z-plain">          {
+</span><span class="z-text z-plain">              # This will be used when Bootmode is set to Legacy Bios
+</span><span class="z-text z-plain">              filename "pxelinux.0";
+</span><span class="z-text z-plain">          }
+</span><span class="z-text z-plain">     }
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span></code></pre><h3 id=troubleshooting>Troubleshooting</h3><p>DHCPD config consists of subnet definitions it looks out for. If a packet arrives from one of these subnets, it responds with DORA flow. It only listens on interfaces for which subnets are defined in configuration. If there's no subnet definition for interfaces, it fails to come up.<p>If you don't see a packet arriving, ensure you've interface subnet added along with target subnet.<h2 id=questions>Questions</h2><ul><li></ul><h2 id=related>Related</h2><ul><li><a href=https://ms-choudhary.github.io/notes/os-install/cobbler/>cobbler</a><li><a href=https://ms-choudhary.github.io/notes/os-install/anaconda/>anaconda</a><li><a href=https://ms-choudhary.github.io/notes/networking/tcpdump/#capture-dhcp-packets>Capture DHCP packets</a></ul></section></article></main></div></div><div class=right-content></div>

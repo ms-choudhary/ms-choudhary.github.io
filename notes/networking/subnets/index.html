@@ -1,0 +1,60 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                Subnets
+            
+        </title><meta content=Subnets property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg style=filter:invert()> <img alt=Auto id=auto-icon src=https://ms-choudhary.github.io/icons/auto.svg style=filter:invert()> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>Subnets</div><div class=meta>Posted on <time>2026-09-08</time> :: Updated on <time>2026-09-08</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/networking/>networking</a> </span></div></div><section class=body><p>IPv4 Address is 32 bit number, which is divided into network and host parts<pre class=z-code><code><span class="z-text z-plain">[192.168.10] + [.98]
+</span><span class="z-text z-plain">network      + host
+</span></code></pre><p>Network part is also represented as: 192.168.10.0/24, <code>/24</code> represents the network bits also known as subnet mask.<p>Hosts in same network are part of broadcast domain, meaning they don't require a router to communicate. They can communicate directly at L2 using switch.<h3 id=ipv4-address-blocks>IPv4 Address blocks</h3><p>Whole of address space is divided into specific address blocks, by IETF & IANA, namely<ul><li>private address spaces - 10.0.0.0/8, 192.168.0.0/16, 172.16.0.0/12<li>Loopback addresses to localhost - 127.0.0.0/8<li>Others</ul><h3 id=netmask>Netmask</h3><p><code>/24</code> contains 2^8 = 256 address<pre class=z-code><code><span class="z-text z-plain">$ ipcalc 192.168.10.0/24
+</span><span class="z-text z-plain">Address:   192.168.10.0         11000000.10101000.00001010. 00000000
+</span><span class="z-text z-plain">Netmask:   255.255.255.0 = 24   11111111.11111111.11111111. 00000000
+</span><span class="z-text z-plain">Wildcard:  0.0.0.255            00000000.00000000.00000000. 11111111
+</span><span class="z-text z-plain">=>
+</span><span class="z-text z-plain">Network:   192.168.10.0/24      11000000.10101000.00001010. 00000000
+</span><span class="z-text z-plain">HostMin:   192.168.10.1         11000000.10101000.00001010. 00000001
+</span><span class="z-text z-plain">HostMax:   192.168.10.254       11000000.10101000.00001010. 11111110
+</span><span class="z-text z-plain">Broadcast: 192.168.10.255       11000000.10101000.00001010. 11111111
+</span><span class="z-text z-plain">Hosts/Net: 254                   Class C, Private Internet
+</span></code></pre><p>Of these first and last address cannot be assigned to a host. First address represents the network itself. And last address is broadcast address, used for broadcasting to all hosts in the network.<h3 id=carve-smaller-subnets>Carve smaller subnets</h3><pre class=z-code><code><span class="z-text z-plain">$ ipcalc -s 24 64 48 192.168.10.0/24
+</span><span class="z-text z-plain">Address:   192.168.10.0         11000000.10101000.00001010. 00000000
+</span><span class="z-text z-plain">Netmask:   255.255.255.0 = 24   11111111.11111111.11111111. 00000000
+</span><span class="z-text z-plain">Wildcard:  0.0.0.255            00000000.00000000.00000000. 11111111
+</span><span class="z-text z-plain">=>
+</span><span class="z-text z-plain">Network:   192.168.10.0/24      11000000.10101000.00001010. 00000000
+</span><span class="z-text z-plain">HostMin:   192.168.10.1         11000000.10101000.00001010. 00000001
+</span><span class="z-text z-plain">HostMax:   192.168.10.254       11000000.10101000.00001010. 11111110
+</span><span class="z-text z-plain">Broadcast: 192.168.10.255       11000000.10101000.00001010. 11111111
+</span><span class="z-text z-plain">Hosts/Net: 254                   Class C, Private Internet
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">1. Requested size: 24 hosts
+</span><span class="z-text z-plain">Netmask:   255.255.255.224 = 27 11111111.11111111.11111111.111 00000
+</span><span class="z-text z-plain">Network:   192.168.10.192/27    11000000.10101000.00001010.110 00000
+</span><span class="z-text z-plain">HostMin:   192.168.10.193       11000000.10101000.00001010.110 00001
+</span><span class="z-text z-plain">HostMax:   192.168.10.222       11000000.10101000.00001010.110 11110
+</span><span class="z-text z-plain">Broadcast: 192.168.10.223       11000000.10101000.00001010.110 11111
+</span><span class="z-text z-plain">Hosts/Net: 30                    Class C, Private Internet
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">2. Requested size: 64 hosts
+</span><span class="z-text z-plain">Netmask:   255.255.255.128 = 25 11111111.11111111.11111111.1 0000000
+</span><span class="z-text z-plain">Network:   192.168.10.0/25      11000000.10101000.00001010.0 0000000
+</span><span class="z-text z-plain">HostMin:   192.168.10.1         11000000.10101000.00001010.0 0000001
+</span><span class="z-text z-plain">HostMax:   192.168.10.126       11000000.10101000.00001010.0 1111110
+</span><span class="z-text z-plain">Broadcast: 192.168.10.127       11000000.10101000.00001010.0 1111111
+</span><span class="z-text z-plain">Hosts/Net: 126                   Class C, Private Internet
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">3. Requested size: 48 hosts
+</span><span class="z-text z-plain">Netmask:   255.255.255.224 = 27 11111111.11111111.11111111.111 00000
+</span><span class="z-text z-plain">Network:   192.168.10.128/27    11000000.10101000.00001010.100 00000
+</span><span class="z-text z-plain">HostMin:   192.168.10.129       11000000.10101000.00001010.100 00001
+</span><span class="z-text z-plain">HostMax:   192.168.10.158       11000000.10101000.00001010.100 11110
+</span><span class="z-text z-plain">Broadcast: 192.168.10.159       11000000.10101000.00001010.100 11111
+</span><span class="z-text z-plain">Hosts/Net: 30                    Class C, Private Internet
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">Needed size:  224 addresses.
+</span><span class="z-text z-plain">Used network: 192.168.10.0/24
+</span><span class="z-text z-plain">Unused:
+</span><span class="z-text z-plain">192.168.10.224/27
+</span></code></pre></section></article></main></div></div><div class=right-content></div>

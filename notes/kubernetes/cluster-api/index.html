@@ -1,0 +1,45 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                Cluster API
+            
+        </title><meta content="Cluster API" property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg style=filter:invert()> <img alt=Auto id=auto-icon src=https://ms-choudhary.github.io/icons/auto.svg style=filter:invert()> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>Cluster API</div><div class=meta>Posted on <time>2026-08-21</time> :: Updated on <time>2026-08-22</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/kubernetes/>kubernetes</a> </span></div></div><section class=body><h3 id=cluster>Cluster</h3><p>Represents kubernetes cluster whose lifecycle is managed by CAPI. Provider specific custom resources are referenced by <code>infrastructureRef</code> or <code>controlPlanRef</code><pre class=z-code><code><span class="z-text z-plain">apiVersion: cluster.x-k8s.io/v1beta2
+</span><span class="z-text z-plain">kind: Cluster
+</span><span class="z-text z-plain">metadata:
+</span><span class="z-text z-plain">  name: my-cluster
+</span><span class="z-text z-plain">spec:
+</span><span class="z-text z-plain">  clusterNetwork:
+</span><span class="z-text z-plain">    pods:
+</span><span class="z-text z-plain">      cidrBlocks:
+</span><span class="z-text z-plain">      - 192.168.0.0/16
+</span><span class="z-text z-plain">  infrastructureRef:
+</span><span class="z-text z-plain">    apiGroup: infrastructure.cluster.x-k8s.io
+</span><span class="z-text z-plain">    kind: VSphereCluster
+</span><span class="z-text z-plain">    name: my-cluster-infrastructure
+</span><span class="z-text z-plain">  controlPlaneRef:
+</span><span class="z-text z-plain">    apiGroup: controlplane.cluster.x-k8s.io
+</span><span class="z-text z-plain">    kind: KubeadmControlPlane
+</span><span class="z-text z-plain">    name: my-control-plane
+</span></code></pre><h3 id=clusterclass>ClusterClass</h3><p>Allows managing multiple cluster objects.<h3 id=machine>Machine</h3><p>Immutable objects representing kubernetes node. Never updated (other than labels, annotations & status) can only be deleted. Provider specific resources are referenced via <code>infrastructureRef</code>. Provider specific controller provisions a new host to register as new node matching the machine spec. If machine is deleted, underlying infrastructure and node is deleted. Imm<pre class=z-code><code><span class="z-text z-plain">apiVersion: cluster.x-k8s.io/v1beta2
+</span><span class="z-text z-plain">kind: Machine
+</span><span class="z-text z-plain">metadata:
+</span><span class="z-text z-plain">  name: my-machine
+</span><span class="z-text z-plain">spec:
+</span><span class="z-text z-plain">  clusterName: my-cluster
+</span><span class="z-text z-plain">  version: v1.35.0
+</span><span class="z-text z-plain">  infrastructureRef:
+</span><span class="z-text z-plain">    apiGroup: infrastructure.cluster.x-k8s.io
+</span><span class="z-text z-plain">    kind: VSphereMachineTemplate
+</span><span class="z-text z-plain">    name: my-machine-infrastructure
+</span><span class="z-text z-plain">  bootstrap:
+</span><span class="z-text z-plain">    configRef:
+</span><span class="z-text z-plain">      apiGroup: bootstrap.cluster.x-k8s.io
+</span><span class="z-text z-plain">      kind: KubeadmConfigTemplate
+</span><span class="z-text z-plain">      name: my-bootstrap-config
+</span><span class="z-text z-plain">status:
+</span><span class="z-text z-plain">  nodeRef:
+</span><span class="z-text z-plain">    name: the-node-running-on-my-machine
+</span></code></pre><h4 id=machine-deployment>Machine Deployment</h4><p>Similar to pod deployment, creates machine set, which creates machines.<h4 id=machine-pool>Machine Pool</h4><p>Infrastructure specific group of machines<h4 id=machine-set>Machine Set</h4><p>Similar to pod replica set.<h4 id=machine-healthcheck>Machine Healthcheck</h4><p>Automatically initiate remediation for missing/unhealthy nodes, by replacing them.<h3 id=infrastructure-provider>Infrastructure Provider</h3><p>Component responsible for provisioning compute machines required by cluster or machines.<h3 id=bootstrap-provider>Bootstrap Provider</h3><p>Turn the server into kubernetes node using machine/node role specific init (using cloud-init) known as BootstrapData. BootStrapData is used by infrastructure provider to bootstrap machine into node.<h3 id=control-plane-provider>Control Plane Provider</h3><p>Can either be:<ul><li>Self provisioned, wholly managed by single Cluster-API deployment<li>Pod based, require external hosting cluster, where control plane components are running as pod, exposed by service.<li>External or managed, controlled by service other than CAPI (eg GKE, AKS, EKS etc)</ul><h4 id=kubeadmcontrolplane>KubeAdmControlPlane</h4><p>Manage set of machines as control plane nodes using kubeadm.</section></article></main></div></div><div class=right-content></div>
