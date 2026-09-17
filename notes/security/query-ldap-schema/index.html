@@ -1,0 +1,60 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                Query LDAP schema
+            
+        </title><meta content="Query LDAP schema" property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg style=filter:invert()> <img alt=Auto id=auto-icon src=https://ms-choudhary.github.io/icons/auto.svg style=filter:invert()> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>Query LDAP schema</div><div class=meta>Posted on <time>2026-08-19</time> :: Updated on <time>2026-08-22</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/security/>security</a> </span></div></div><section class=body><p><strong>Source</strong>: https://dexidp.io/docs/connectors/ldap/#getting-started<p>Generally when you're configuring LDAP authentication for an application, you've to discover/map certain fields to application configuration. Following tools are helpful in that.<h3 id=install-ldapsearch>Install ldapsearch</h3><pre class=z-code><code><span class="z-text z-plain">dnf install openldap-clients
+</span><span class="z-text z-plain">&lt;or>
+</span><span class="z-text z-plain">apt-get install ldap-utils
+</span></code></pre><h3 id=user-group-schema-mapping>User/group schema mapping</h3><p>If directory is small, you can dump all entries by:<pre class=z-code><code><span class="z-text z-plain">ldapsearch -x -H ldap://ldap.example.org -b 'dc=example,dc=org'
+</span></code></pre><p>First find user entry<pre class=z-code><code><span class="z-text z-plain">dn: uid=jdoe,cn=users,cn=compat,dc=example,dc=org
+</span><span class="z-text z-plain">cn: Jane Doe
+</span><span class="z-text z-plain">objectClass: posixAccount
+</span><span class="z-text z-plain">objectClass: ipaOverrideTarget
+</span><span class="z-text z-plain">objectClass: top
+</span><span class="z-text z-plain">gidNumber: 200015
+</span><span class="z-text z-plain">gecos: Jane Doe
+</span><span class="z-text z-plain">uidNumber: 200015
+</span><span class="z-text z-plain">loginShell: /bin/bash
+</span><span class="z-text z-plain">homeDirectory: /home/jdoe
+</span><span class="z-text z-plain">mail: jane.doe@example.com
+</span><span class="z-text z-plain">uid: janedoe
+</span></code></pre><p>Which can be mapped like:<pre class=z-code><code><span class="z-text z-plain">userSearch:
+</span><span class="z-text z-plain">  # The directory directly above the user entry.
+</span><span class="z-text z-plain">  baseDN: cn=users,cn=compat,dc=example,dc=org
+</span><span class="z-text z-plain">  filter: "(objectClass=posixAccount)"
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">  # Expect user to enter "janedoe" when logging in.
+</span><span class="z-text z-plain">  username: uid
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">  # Use the full DN as an ID.
+</span><span class="z-text z-plain">  idAttr: DN
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">  # When an email address is not available, use another value unique to the user, like uid.
+</span><span class="z-text z-plain">  emailAttr: mail
+</span><span class="z-text z-plain">  nameAttr: gecos
+</span></code></pre><p>Then find group entry:<pre class=z-code><code><span class="z-text z-plain">dn: cn=developers,cn=groups,cn=compat,dc=example,dc=org
+</span><span class="z-text z-plain">memberUid: janedoe
+</span><span class="z-text z-plain">memberUid: johndoe
+</span><span class="z-text z-plain">gidNumber: 200115
+</span><span class="z-text z-plain">objectClass: posixGroup
+</span><span class="z-text z-plain">objectClass: ipaOverrideTarget
+</span><span class="z-text z-plain">objectClass: top
+</span><span class="z-text z-plain">cn: developers
+</span></code></pre><p>Group search must match a user attribute to group attribute. For eg, user's uid is matched to group's memberUid.<pre class=z-code><code><span class="z-text z-plain">groupSearch:
+</span><span class="z-text z-plain">  # The directory directly above the group entry.
+</span><span class="z-text z-plain">  baseDN: cn=groups,cn=compat,dc=example,dc=org
+</span><span class="z-text z-plain">  filter: "(objectClass=posixGroup)"
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">  # The group search needs to match the "uid" attribute on
+</span><span class="z-text z-plain">  # the user with the "memberUid" attribute on the group.
+</span><span class="z-text z-plain">  userMatchers:
+</span><span class="z-text z-plain">  - userAttr: uid
+</span><span class="z-text z-plain">    groupAttr: memberUid
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">  # Unique name of the group.
+</span><span class="z-text z-plain">  nameAttr: cn
+</span></code></pre><h2 id=questions>Questions</h2><ul><li></ul><h2 id=related>Related</h2><ul><li><a href=https://ms-choudhary.github.io/notes/security/oidc/>oidc</a></ul></section></article></main></div></div><div class=right-content></div>

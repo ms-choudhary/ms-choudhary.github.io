@@ -1,0 +1,44 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                Fixing 404s When Serving SPA from a Go Binary
+            
+        </title><meta content="Fixing 404s When Serving SPA from a Go Binary" property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg style=filter:invert()> <img alt=Auto id=auto-icon src=https://ms-choudhary.github.io/icons/auto.svg style=filter:invert()> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>Fixing 404s When Serving SPA from a Go Binary</div><div class=meta>Posted on <time>2026-08-19</time> :: Updated on <time>2026-08-22</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/go/>go</a> </span></div></div><section class=body><p>This is a sample go code I was using to host frontend UI directly from golang:<pre class=z-code><code><span class="z-text z-plain">//go:embed ui/dist/*
+</span><span class="z-text z-plain">var frontendFS embed.FS
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">func main() {
+</span><span class="z-text z-plain">	distFS, err := fs.Sub(frontendFS, "ui/dist")
+</span><span class="z-text z-plain">	if err != nil {
+</span><span class="z-text z-plain">		log.Fatal(err)
+</span><span class="z-text z-plain">	}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">	frontendHandler := http.FileServer(http.FS(distFS))
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+</span><span class="z-text z-plain">		frontendHandler.ServeHTTP(w, r)
+</span><span class="z-text z-plain">	})
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">	log.Printf("listening on: localhost:9876")
+</span><span class="z-text z-plain">	log.Fatal(http.ListenAndServe(":9876", nil))
+</span><span class="z-text z-plain">}
+</span></code></pre><p>For the frontend, I was using Vue.js (I don't have much experience in frontend), which compiles everything after <code>npm run build</code> into <code>ui/dist</code>.<p>We then embed <code>ui/dist/</code> directory in go binary. And finally, we use <code>http.FileServer</code> to serve files from the go server, which defaults to serving <code>ui/dist/index.html</code>.<p>I wanted the Vue.js framework to handle <code>/custom</code> URL path, to show a different page. I had implemented UI changes, and they were working fine when tested separately. But when accessing them via go server, I was getting <code>404 page not found</code>.<p>After little bit of fiddling, I figured out it was because <code>http.FileServer</code> was trying to serve a file called <code>custom</code> and when it couldn't find, it returned 404.<p>The fix was to serve <code>index.html</code> for any path where file doesn't exist and let Vue handle the routing:<pre class=z-code><code><span class="z-text z-plain">
+</span><span class="z-text z-plain">	  indexHTML, err := fs.ReadFile(distFS, "index.html")
+</span><span class="z-text z-plain">	  if err != nil {
+</span><span class="z-text z-plain">		  log.Fatal(err)
+</span><span class="z-text z-plain">	  }
+</span><span class="z-text z-plain">	  
+</span><span class="z-text z-plain">    // serve index.html for any path that does not exists
+</span><span class="z-text z-plain">    // and let vue handle the routing
+</span><span class="z-text z-plain">    _, err = distFS.Open(path)
+</span><span class="z-text z-plain">    if err != nil {
+</span><span class="z-text z-plain">			w.Header().Set("Content-Type", "text/html; charset=utf-8")
+</span><span class="z-text z-plain">			if _, err := w.Write(indexHTML); err != nil {
+</span><span class="z-text z-plain">				log.Printf("failed to write index.html fallback: %v", err)
+</span><span class="z-text z-plain">			}
+</span><span class="z-text z-plain">			return
+</span><span class="z-text z-plain">    }
+</span><span class="z-text z-plain">
+</span></code></pre><h2 id=questions>Questions</h2><ul><li></ul><h2 id=related>Related</h2><ul><li><a href=https://ms-choudhary.github.io/notes/go/go-http/>go-http</a></ul></section></article></main></div></div><div class=right-content></div>

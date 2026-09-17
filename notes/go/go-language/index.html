@@ -1,0 +1,53 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                Golang Language
+            
+        </title><meta content="Golang Language" property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg style=filter:invert()> <img alt=Auto id=auto-icon src=https://ms-choudhary.github.io/icons/auto.svg style=filter:invert()> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>Golang Language</div><div class=meta>Posted on <time>2026-08-19</time> :: Updated on <time>2026-08-24</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/go/>go</a> </span></div></div><section class=body><h2 id=array-slices>Array, Slices</h2><p>Source: https://go.dev/blog/slices<ul><li>Array is the building block of contingous items, contains size as part of it's definition. eg <code>var buffer [256]byte</code>. Arrays are always fixed size.<li>Slice is a datastructure which describes a contiguous section of array: <code>var slice []byte = buffer[100:150]</code>. Behind the scenes, it contains the pointer to array, length and capacity (maximum length to which slice can extend).</ul><h2 id=string-rune-character-byte>String, Rune, Character, Byte</h2><p>Source: https://go.dev/blog/strings<ul><li>String in golang is slice of bytes<li>String literals are always utf-8 encoded. (Go source code) eg <code>const nihongo = "日本語"</code><li>In unicode standard, each character is represented by "code point" eg, U+2318 represents <code>⌘</code> , in golang this code point is referred as rune (aliased to int32)<li>When you range through a loop, it decodes 1 utf-8 length rune on each loop</ul><h2 id=time>Time</h2><ul><li><a href=https://pkg.go.dev/time@go1.23.2#Time.Format>Layout string in time</a>.Parse and time.Format expects this date (reference date): 01/02/2006  <code>Jan 2 15:04:05 2006 MST</code> (Note the date should be this specific date and time for it to parse successfully). Following shows some example:</ul><pre class=z-code><code><span class="z-text z-plain">time.Parse("01/02/2006", "10/02/2024")
+</span><span class="z-text z-plain">time.Parse("02 of 01 2006", "02 of 10 2024")
+</span></code></pre><h2 id=embed-files-in-binary>Embed files in binary</h2><ul><li>Use <code>embed</code> package to add files to binary at compile time</ul><h2 id=use-local-dependency>Use local dependency</h2><p>To use local version of the dependency, you can clone the deps in dir $DEP, then use replace directive in go mod<p><code>$ go mod edit -replace github.com/google/go-cmp=$DEP</code><h2 id=import-local-modules>Import local modules</h2><p>Import other packages rather than main package<pre class=z-code><code><span class="z-text z-plain">import (
+</span><span class="z-text z-plain">  "noc-manager/pkg/models"
+</span><span class="z-text z-plain">)
+</span></code></pre><p>Run <code>go mod edit -replace noc-manager=../../noc-manager</code> to add a local dependency & run <code>go mod tidy</code><p>Tip: Name modules as simple names rather than git urls unless you're planning on publishing them. Otherwise you might get weird issues.<h2 id=commandline>CommandLine</h2><ul><li>After parsing flags you can get other arguments via: <code>flag.Args()</code> (array) or <code>flag.Arg(i)</code> specific arg. <code>flag.Narg</code> = number of args</ul><h2 id=run-debugger>Run debugger</h2><pre class=z-code><code><span class="z-text z-plain">$ go install github.com/go-delve/delve/cmd/dlv@latest
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// in root dir
+</span><span class="z-text z-plain">$ dlv debug
+</span></code></pre><h2 id=sql>Sql</h2><ul><li>For database sql, checkout <a href=https://go.dev/wiki/SQLInterface>this wiki</a></ul><h2 id=slog>Slog</h2><pre class=z-code><code><span class="z-text z-plain">slog.Info(msg, k1, v1, k2, v2)
+</span></code></pre><p>Log consists of log level, message, and key value pairs (it is assumed that key will follow value in above example).<h4 id=levels>Levels</h4><p>Some common levels include Info, Warn, Debug, Error. But since, log levels are integers, you can define your own custom levels.<h4 id=handlers>Handlers</h4><pre class=z-code><code><span class="z-text z-plain">logger := slog.NewTextHandler()
+</span><span class="z-text z-plain">logger.Info(msg, user, os.Getenv(USER))
+</span></code></pre><p>slog supports multiple handlers, you can even write your own custom handler. Some common handlers include:<ul><li>slog.NewTextHandler (prints key=value in text)<li>slog.NewJSONHandler (prints key value in json)</ul><p>Out of Box, if you don't use specific handler, it uses default Logger instance.<ul><li>For more info, checkout docs: <a href=https://pkg.go.dev/log/slog>slog</a></ul><h2 id=tostring-equivalent>ToString equivalent</h2><pre class=z-code><code><span class="z-text z-plain">type Transaction struct {
+</span><span class="z-text z-plain">  Amount          float64 `json:"amount"`
+</span><span class="z-text z-plain">  Description     string  `json:"description"`
+</span><span class="z-text z-plain">  TransactionDate string  `json:"transaction_date"`
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">func (t Transaction) String() string {
+</span><span class="z-text z-plain">  return fmt.Sprintf("Amount: %f, Description: %s, Date: %s", t.Amount, t.Description, t.TransactionDate)
+</span><span class="z-text z-plain">}
+</span></code></pre><h2 id=regexp>Regexp</h2><pre class=z-code><code><span class="z-text z-plain">package main
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">import (
+</span><span class="z-text z-plain">	"fmt"
+</span><span class="z-text z-plain">	"regexp"
+</span><span class="z-text z-plain">)
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">func main() {
+</span><span class="z-text z-plain">	re := regexp.MustCompile(`Rs\.(\d+(?:\.\d+)?) has been debited`)
+</span><span class="z-text z-plain">	fmt.Printf("%q\n", re.FindStringSubmatch("Dear Customer, Rs.396.00 has been debited from account"))
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">["Rs.396.00 has been debited" "396.00"]
+</span></code></pre><h2 id=get-error-in-string>Get error in string</h2><pre class=z-code><code><span class="z-text z-plain">s := err.Error()
+</span></code></pre><h2 id=json-or-yaml-omitempty-or-ignore>JSON or YAML omitempty or ignore</h2><pre class=z-code><code><span class="z-text z-plain">type T struct {
+</span><span class="z-text z-plain">    F int `yaml:"a,omitempty"`
+</span><span class="z-text z-plain">    B int `yaml:"-"` // this field will be ignored from rendering
+</span><span class="z-text z-plain">}
+</span></code></pre><pre class=z-code><code><span class="z-text z-plain">type T struct {
+</span><span class="z-text z-plain">    F int `json:"a,omitempty"`
+</span><span class="z-text z-plain">    B int `json:"-"` // this field will be ignored from rendering
+</span><span class="z-text z-plain">}
+</span></code></pre><h2 id=json-encoder-decoder>Json Encoder/Decoder</h2><p><code>encodings/json</code> package has Encoder/Decoder, can be used as:<pre class=z-code><code><span class="z-text z-plain">err := json.NewDecoder(resp.Body).Decode(&var)
+</span></code></pre><p>it accepts any input which implements interfaces io.Reader or io.Writer (basically streaming data). Some core data sources which implement it are:<ul><li>os.File (read from file on disk)<li>strings.Reader (allows to read string)<li>http.Response.Body (http response)<li>bytes.Buffer (similar to string, in memory buffer)<li>net.Conn (allows reading from socket, tcp or udp)</ul><h2 id=sources>Sources</h2><ul><li></ul><h2 id=related>Related</h2><ul><li></ul></section></article></main></div></div><div class=right-content></div>

@@ -1,0 +1,41 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                Docker Multiarch Images
+            
+        </title><meta content="Docker Multiarch Images" property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg style=filter:invert()> <img alt=Auto id=auto-icon src=https://ms-choudhary.github.io/icons/auto.svg style=filter:invert()> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>Docker Multiarch Images</div><div class=meta>Posted on <time>2026-08-19</time> :: Updated on <time>2026-08-22</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/container/>container</a> </span></div></div><section class=body><p>Docker image is specific for os + host architecture (eg linux + arm64 or linux + amd64).<pre class=z-code><code><span class="z-text z-plain"> $ docker image inspect miniflux/miniflux | jq '.[] | "\(.Os)\/\(.Architecture)"'
+</span><span class="z-text z-plain">"linux/arm64"
+</span></code></pre><p>Same image can be built for different architectures. Running non multi arch image on incorrect platform will fail. Docker pulls correct image from registry based on os/arch set in docker engine.<pre class=z-code><code><span class="z-text z-plain">$ docker version
+</span><span class="z-text z-plain">  OS/Arch:          linux/arm64
+</span></code></pre><p>Image listing on dockerhub generally shows if it's a multiarch image (os/arch) for each tag.<p>Image manifests files contains all individual multi arch images links. This is part of docker/OCI registry spec.<pre class=z-code><code><span class="z-text z-plain">$ docker manifest inspect alpine:latest
+</span><span class="z-text z-plain">{
+</span><span class="z-text z-plain">   "schemaVersion": 2,
+</span><span class="z-text z-plain">   "mediaType": "application/vnd.oci.image.index.v1+json",
+</span><span class="z-text z-plain">   "manifests": [
+</span><span class="z-text z-plain">      {
+</span><span class="z-text z-plain">         "mediaType": "application/vnd.oci.image.manifest.v1+json",
+</span><span class="z-text z-plain">         "size": 1022,
+</span><span class="z-text z-plain">         "digest": "sha256:59855d3dceb3ae53991193bd03301e082b2a7faa56a514b03527ae0ec2ce3a95",
+</span><span class="z-text z-plain">         "platform": {
+</span><span class="z-text z-plain">            "architecture": "amd64",
+</span><span class="z-text z-plain">            "os": "linux"
+</span><span class="z-text z-plain">         }
+</span><span class="z-text z-plain">      },
+</span><span class="z-text z-plain">
+</span></code></pre><p>Pulling <code>alpine:latest</code> in this case will fetch the image mainfest file, it then matches the local os/arch and pulls the corresponding image sha. Image spec contains individual layers, which are pulled next.<pre class=z-code><code><span class="z-text z-plain">$ docker image inspect alpine:latest
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">        "RootFS": {
+</span><span class="z-text z-plain">            "Type": "layers",
+</span><span class="z-text z-plain">            "Layers": [
+</span><span class="z-text z-plain">                "sha256:0b83d017db6efafadf6b3f18d087d2ce1d67d8f0e927dc7254b0ad088074cd3a",
+</span><span class="z-text z-plain">                "sha256:1c2824e33c7138199cf5b48c29289ceb30179b427bf1cee68cf2f502b537ae82",
+</span><span class="z-text z-plain">                "sha256:f19172968839067b8298f671f9d192997f1e8cc7b79604b4df72793197668477"
+</span><span class="z-text z-plain">            ]
+</span><span class="z-text z-plain">        },
+</span></code></pre><p>Non multiarch images manifest just link a single image.<h3 id=build>Build</h3><p>To build a multi arch image, you can build and push the image separately for each arch on a build farm (set of machines with different arch). Each of these image exists as a separate manifest. Finally create a common manifest file linking all previous images, and push that to registry.<pre class=z-code><code><span class="z-text z-plain">$ docker manifest create alpine:latest alpine:arm64-latest alpine:amd64-latest
+</span><span class="z-text z-plain">$ docker manifest push alpine:latest
+</span></code></pre><p>In dockerfile, if base image is multi arch, you don't need to do anything else. It should pull correct image and build your app for correct platform. If, however, base is not multi arch, you need to create and maintain separate dockerfile for each architecture.<p>In recent docker (with buildx), you can run:<pre class=z-code><code><span class="z-text z-plain">$ docker build --platform linux/amd64, linux/arm64 image .
+</span></code></pre><p>to automate all these separate steps, i.e, building and pushing individual images and creating manifest.<p>It requires emulation via qemu, that must be separately configured.<h2 id=sources>Sources</h2><ul><li>https://www.youtube.com/watch?v=cDJrQ4IzZ_M</ul><h2 id=questions>Questions</h2><ul><li>Explore qemu emulation and binfmt_misc #question</ul><h2 id=related>Related</h2><ul><li><a href=https://ms-choudhary.github.io/notes/container/containers/#image>containers#Image</a></ul></section></article></main></div></div><div class=right-content></div>

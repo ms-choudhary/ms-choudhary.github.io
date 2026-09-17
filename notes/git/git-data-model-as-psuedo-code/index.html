@@ -1,0 +1,49 @@
+<!doctype html><html class="dark light" lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://ms-choudhary.github.io name=base><title>
+            
+                Git's data model as psuedo code
+            
+        </title><meta content="Git's data model as psuedo code" property=og:title><link href=https://ms-choudhary.github.io/fonts.css rel=stylesheet><link media="(prefers-color-scheme: dark)" href=/syntax-theme-dark.css rel=stylesheet><link media="(prefers-color-scheme: light)" href=/syntax-theme-light.css rel=stylesheet><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/atom.xml rel=alternate type=application/atom+xml><link title="
+    Mohit Choudhary
+" href=https://ms-choudhary.github.io/rss.xml rel=alternate type=application/rss+xml><link href=https://ms-choudhary.github.io/theme/light.css rel=stylesheet><link href=https://ms-choudhary.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><script src=https://ms-choudhary.github.io/js/themetoggle.js></script><script>setTheme(getSavedTheme());</script><link href=https://ms-choudhary.github.io/main.css media=screen rel=stylesheet><body><div class=left-content></div><div class=content><nav><div class=left-nav><a href=https://ms-choudhary.github.io>Mohit Choudhary</a><div class=socials><a class=social href=https://www.linkedin.com/in/mohit-choudhary-32584939/ rel=me> <img alt=linkedin src=https://ms-choudhary.github.io/icons/social/linkedin.svg> </a><a class=social href=https://github.com/ms-choudhary rel=me> <img alt=github src=https://ms-choudhary.github.io/icons/social/github.svg> </a><a class=social href=/atom.xml rel=me> <img alt=rss src=https://ms-choudhary.github.io/icons/social/rss.svg> </a></div></div><div class=right-nav><a href=https://ms-choudhary.github.io/posts style=margin-right:.5em>/posts</a><a href=https://ms-choudhary.github.io/projects style=margin-right:.5em>/projects</a><a href=https://ms-choudhary.github.io/notes style=margin-right:.5em>/notes</a><a href=https://ms-choudhary.github.io/tags style=margin-right:.5em>/tags</a><a onclick="toggleTheme(); event.preventDefault();" href=# id=dark-mode-toggle> <img alt=Light id=sun-icon src=https://ms-choudhary.github.io/icons/sun.svg> <img alt=Dark id=moon-icon src=https://ms-choudhary.github.io/icons/moon.svg style=filter:invert()> <img alt=Auto id=auto-icon src=https://ms-choudhary.github.io/icons/auto.svg style=filter:invert()> </a><script>updateItemToggleTheme()</script></div></nav><div data-selector="main article p" class=visible-element-observer-root><main><article><div class=title><div class=page-header>Git's data model as psuedo code</div><div class=meta>Posted on <time>2026-08-19</time> :: Updated on <time>2026-08-22</time><span class=tags-label>::</span><span class=tags> <a class=post-tag href=https://ms-choudhary.github.io/tags/git/>git</a> </span></div></div><section class=body><pre class=z-code><code><span class="z-text z-plain">type blob = array&lt;byte>
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// name of file/dir => it's contents
+</span><span class="z-text z-plain">type tree = map&lt;string, tree | blob>
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// commits can have multiple parents, and top level tree
+</span><span class="z-text z-plain">type commit = struct {
+</span><span class="z-text z-plain">  parent: array&lt;commit>
+</span><span class="z-text z-plain">  author: string
+</span><span class="z-text z-plain">  message: string
+</span><span class="z-text z-plain">  snapshot: tree
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// all blob/tree/commit are unified as objs
+</span><span class="z-text z-plain">type object = blob | tree | commit
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// all objs are hashed and stored. key is the hash
+</span><span class="z-text z-plain">objects = map&lt;string, object>
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">def store(object):
+</span><span class="z-text z-plain">  id = sha1(object)
+</span><span class="z-text z-plain">  objects[id] = object
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">def load(id):
+</span><span class="z-text z-plain">  return objects[id]
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// human readable name (eg, master) => objects hash
+</span><span class="z-text z-plain">references = map&lt;string, string>
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">def update_reference(name, id):
+</span><span class="z-text z-plain">  references[name] = id
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">def read_reference(name):
+</span><span class="z-text z-plain">  return references[name]
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">def load_reference(name_or_id):
+</span><span class="z-text z-plain">  if name_or_id in references:
+</span><span class="z-text z-plain">    return load(references[name_or_id])
+</span><span class="z-text z-plain">  else:
+</span><span class="z-text z-plain">    return load(name_or_id)
+</span></code></pre><ul><li>All folders are tree in git<li>All files are blobs<li>Commit is like snapshot of all files. They can be linked with multiple parents, which forms history.<li>All blobs/tree/commits are represented as objects<li>All objects are represented by SHA-1 hash of it's content, so it's easy to know when files change.<li>References then are human readable translation of hash of these objects (eg master/feature-fix-auth)<li><code>HEAD</code> is a reference of latest/current commit sha in the project<li>All git objects except references are immutable (all that you do with destructive commands like <code>reset —hard</code> is just point to different references). Thus it's hard to lose any data in git.<li>Git objects and references defines all the data inside git dir<li>All git commands does is manipulate this DAG by adding objects, adding/updating references<li>Use command: <code>git cat-file -p &lt;hash></code> to decode and print what git obj with hash contains<li>Staged / Unstaged changes <ul><li>When you make any change, git will show the change made, but this change is not yet tracked (ie, you can lose the changes)<li>To track the changes with git, you've add them by <code>git add &lt;files></code> . This stores all these changes in index (which is like a tree and keeps track of all changes added)<li>On commit, git uses this index to create current snapshot of project</ul><li>Three ways git merge <ul><li>Checkout branch <code>b</code> from master, update a file and commit. Checkout back to master. What happens when you run <code>git merge b</code> <ul><li>Git checks two commits of refs <code>master</code> & <code>b</code> and sees one is a parent of other, it just updates <code>master</code> to new commit & calls it a day</ul><li>Checkout <code>b</code> , update a file <code>foo.txt</code>, while in a separate flow, master also updates file <code>bar.txt</code> <ul><li>Git now sees two different commits, it traces back in history to a common commit. Checks what changed in these two new commits. Since changes are in separate files. It creates a new commit, with all changes, and sets the parent as the two commits.</ul><li>Update same file as in master <ul><li>Follow steps similar as above, but now it sees that commits in question have conflicting changes. It seeks developer assistance in resolving it, instead of being over smart.</ul></ul></ul><h2 id=sources>Sources</h2><ul><li>https://missing.csail.mit.edu/2026/version-control/</ul></section></article></main></div></div><div class=right-content></div>
