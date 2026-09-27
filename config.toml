@@ -22,6 +22,7 @@ highlight_themes_css = [
 [extra]
 use_cdn = false
 theme = "toggle"
+stylesheets = ["custom.css"]
 
 menu = [
   { name = "/posts", url = "/posts", weight = 1 },
