@@ -1,0 +1,21 @@
+/* Real underline (instead of border-bottom) for links in post/page body text,
+   with underline-offset so it doesn't crowd descenders. Also extends the
+   underline to section descriptions (e.g. the /notes intro), which the theme
+   doesn't cover since they sit outside <main>. */
+main a,
+.section-content a {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Keep the theme's existing exclusions (dates, tags, cards, nav, headings). */
+main .meta a,
+main .talks-grid a,
+main .cards a,
+main .zola-anchor,
+.post-list .post-header h1 a {
+  text-decoration: none;
+}
